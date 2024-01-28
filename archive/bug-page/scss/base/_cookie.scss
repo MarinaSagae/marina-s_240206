@@ -1,0 +1,99 @@
+@use "./global" as *;
+
+.cookie {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 2.5em;
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  bottom: divceil(100, 10, rem);
+  left: 0;
+  z-index: 150;
+}
+.cookie-consent {
+  visibility: hidden;
+}
+.cookie-consent.is-show {
+  visibility: visible;
+}
+.cc-hide1 {
+  display: none;
+}
+.textArea {
+  width: 90%;
+  float: left;
+  text-align: left;
+  bottom: 0;
+  z-index: 1;
+}
+.btnArea {
+  width: 10%;
+  float: right;
+}
+.textArea .ttl {
+  font-weight: normal;
+}
+.textArea .ttl a {
+  color: #fff;
+}
+.textArea p {
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.btnArea button:hover {
+  background: #777;
+}
+
+.btnArea button {
+  display: block;
+  margin: 0 auto;
+  background: transparent;
+  color: #fff;
+  padding: 0.8rem 2rem;
+  border: 1px solid #fff;
+  width: auto;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font: revert;
+}
+.btnArea button:hover {
+  background: #000;
+}
+
+@include sp {
+  .cookie {
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 2.5em;
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    bottom: 12rem;
+    left: 0;
+    z-index: 150;
+  }
+  #top .cookie {
+    bottom: 25rem;
+  }
+  .textArea {
+    width: 100%;
+    float: none;
+    text-align: left;
+    bottom: 0;
+    z-index: 1;
+  }
+  .btnArea {
+    width: 100%;
+    float: none;
+    margin-top: 3vw;
+  }
+  .btnArea button {
+    width: 100%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+  }
+}

@@ -1,0 +1,615 @@
+@use "../base/global" as *;
+@use "../utility/utility" as *;
+@use "./text" as *;
+
+/* index/common
+__________________________________*/
+.tab-panel {
+  width: 100%;
+}
+
+.tab-group {
+  display: flex;
+  justify-content: center;
+}
+
+.tab {
+  @extend .u-flex-c;
+  flex-grow: 1;
+  text-align: center;
+  width: 50%;
+  height: divceil(74, 10, rem);
+  position: relative;
+  border: transparent;
+  cursor: pointer;
+  opacity: 0.5;
+
+  @include sp {
+    height: divceil(130, 10, rem);
+  }
+}
+
+.panel {
+  display: none;
+}
+
+.tab.is-active {
+  opacity: 1;
+  transition: all 0.2s ease-out;
+}
+
+.tab.is-active::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: divceil(-10, 10, rem);
+  left: 0;
+  width: 0px;
+  height: 0px;
+  margin: auto;
+  border-style: solid;
+  border-width: divceil(20, 10, rem) divceil(20, 10, rem) 0 divceil(20, 10, rem);
+
+  @include sp {
+    bottom: divceil(-15, 10, rem);
+    border-width: divceil(40, 10, rem) divceil(40, 10, rem) 0 divceil(40, 10, rem);
+  }
+}
+.tab.c-bg-bl.is-active::before {
+  border-color: #0086cd transparent transparent transparent;
+}
+.tab.c-bg-red2.is-active::before {
+  border-color: #e83743 transparent transparent transparent;
+}
+
+.panel.is-show {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+
+  @include sp {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+}
+
+.panel-l {
+  height: divceil(500, 10, rem);
+  @include sp {
+    height: divceil(1185, 10, rem);
+  }
+  > .layout-1 {
+    grid-area: 1 / 1 / 4 / 2;
+    position: relative;
+
+    @include sp {
+      grid-area: 1 / 1 / 2 / 2;
+    }
+  }
+
+  > .layout-1 > .tab-img {
+    width: divceil(387, 10, rem);
+    height: divceil(472, 10, rem);
+    position: absolute;
+    left: divceil(90, 10, rem);
+    top: divceil(30, 10, rem);
+
+    @include sp {
+      left: divceil(130, 10, rem);
+      top: 0;
+      width: divceil(415, 10, rem);
+      height: auto;
+    }
+  }
+
+  > .layout-1 .tab-img-logo {
+    width: divceil(103, 10, rem);
+    height: divceil(17, 10, rem);
+    position: absolute;
+    bottom: divceil(15, 10, rem);
+    left: divceil(20, 10, rem);
+  }
+
+  > .layout-2 {
+    grid-area: 1 / 2 / 2 / 6;
+    padding-top: divceil(58, 10, rem);
+    padding-left: divceil(390, 10, rem);
+    padding-bottom: divceil(50, 10, rem);
+
+    @include sp {
+      grid-area: 2 / 1 / 3 / 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: divceil(52, 10, rem) divceil(52, 10, rem) divceil(42, 10, rem);
+    }
+  }
+
+  > .layout-3 {
+    grid-area: 3 / 2 / 2 / 6;
+    height: divceil(136, 10, rem);
+
+    @include sp {
+      grid-area: 3 / 1 / 4 / 2;
+      height: divceil(304, 10, rem);
+    }
+  }
+}
+
+.panel-r {
+  height: divceil(500, 10, rem);
+
+  @include sp {
+    height: divceil(1185, 10, rem);
+  }
+  > .layout-1 {
+    grid-area: 1 / 5 / 5 / 6;
+    position: relative;
+
+    @include sp {
+      grid-area: 1 / 1 / 2 / 2;
+    }
+  }
+
+  > .layout-1 > .tab-img {
+    width: divceil(482, 10, rem);
+    height: divceil(460, 10, rem);
+    position: absolute;
+    right: divceil(90, 10, rem);
+    top: 0;
+
+    @include sp {
+      width: divceil(540, 10, rem);
+      height: auto;
+      right: divceil(60, 10, rem);
+    }
+  }
+
+  > .layout-1 .tab-img-logo {
+    width: divceil(103, 10, rem);
+    height: divceil(17, 10, rem);
+    position: absolute;
+    bottom: divceil(15, 10, rem);
+    right: divceil(20, 10, rem);
+  }
+
+  > .layout-2 {
+    grid-area: 1 / 1 / 4 / 5;
+    padding-top: divceil(58, 10, rem);
+    padding-left: divceil(145, 10, rem);
+    padding-bottom: divceil(50, 10, rem);
+
+    @include sp {
+      grid-area: 2 / 1 / 3 / 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: divceil(62, 10, rem) divceil(42, 10, rem) divceil(112, 10, rem);
+    }
+  }
+
+  > .layout-3 {
+    grid-area: 4 / 1 / 5 / 5;
+    height: divceil(136, 10, rem);
+
+    @include sp {
+      grid-area: 3 / 1 / 4 / 2;
+      height: divceil(304, 10, rem);
+    }
+  }
+}
+
+/* scene
+__________________________________*/
+// 下層ページ用
+.ul-tab-container {
+  margin: divceil(60, 10, rem) auto divceil(85, 10, rem);
+  max-width: divceil(920, 10, rem);
+  width: 100%;
+  @include sp {
+    margin: divceil(75, 10, rem) auto divceil(100, 10, rem);
+    max-width: divceil(680, 10, rem);
+  }
+  .ul-tab-ttl {
+    margin-bottom: divceil(40, 10, rem);
+    padding-bottom: divceil(10, 10, rem);
+    border-bottom: 2px solid #000;
+    text-align: center;
+    font-size: divceil(32, 10, rem);
+    font-weight: 300;
+    @include sp {
+      padding-bottom: divceil(20, 10, rem);
+      font-size: divceil(50, 10, rem);
+      line-height: divceil(60, 10, rem);
+    }
+  }
+  .panel-l {
+    @include pc {
+      height: auto;
+    }
+    .layout-1 {
+      .tab-img {
+        width: divceil(216, 10, rem);
+        height: auto;
+        @include pc {
+          top: divceil(10, 10, rem);
+        }
+        @include sp {
+          width: divceil(415, 10, rem);
+        }
+      }
+      .tab-img-logo {
+        @include pc {
+          width: divceil(80, 10, rem);
+          height: auto;
+        }
+      }
+    }
+    .layout-2 {
+      @include pc {
+        padding-left: divceil(180, 10, rem);
+      }
+      @include sp {
+        padding: divceil(52, 10, rem) divceil(52, 10, rem) divceil(42, 10, rem);
+      }
+    }
+    .layout-3 {
+      @include pc {
+        height: divceil(70, 10, rem);
+      }
+    }
+  }
+  .panel-r {
+    @include pc {
+      height: auto;
+    }
+    .layout-1 {
+      .tab-img {
+        width: divceil(275, 10, rem);
+        height: auto;
+        @include sp {
+          width: divceil(540, 10, rem);
+          right: divceil(60, 10, rem);
+        }
+      }
+    }
+    .tab-img-logo {
+      @include pc {
+        width: divceil(80, 10, rem);
+        height: auto;
+      }
+    }
+    .layout-2 {
+      @include pc {
+        padding-left: divceil(90, 10, rem);
+      }
+      @include sp {
+        padding: divceil(62, 10, rem) divceil(52, 10, rem) divceil(112, 10, rem);
+      }
+    }
+    .layout-3 {
+      @include pc {
+        height: divceil(70, 10, rem);
+      }
+    }
+  }
+  .panel.is-show {
+    display: grid;
+    grid-template-rows: 1fr;
+    // @include sp {
+    //   grid-template-columns: 1fr;
+    //   grid-template-rows: 3fr 2fr 1fr;
+    // }
+  }
+  .btn-inner-sm {
+    @include pc {
+      width: divceil(172, 10, rem);
+      height: divceil(34, 10, rem);
+    }
+    @include sp {
+      width: divceil(590, 10, rem);
+      height: divceil(90, 10, rem);
+    }
+    .icon-btn {
+      @include pc {
+        width: divceil(40, 10, rem);
+      }
+      @include sp {
+        width: divceil(88, 10, rem);
+      }
+      > svg {
+        @include pc {
+          width: 0.8em;
+        }
+      }
+    }
+
+    .icon-txt {
+      @include sp {
+        margin-right: divceil(90, 10, rem);
+      }
+    }
+  }
+  .btn-inner-md {
+    @include pc {
+      width: divceil(150, 10, rem);
+      height: divceil(34, 10, rem);
+    }
+    @include sp {
+      width: divceil(560, 10, rem);
+      height: divceil(90, 10, rem);
+      gap: 0 divceil(105, 10, rem);
+    }
+    .icon-btn {
+      @include pc {
+        width: divceil(30, 10, rem);
+      }
+      > svg {
+        @include pc {
+          width: 0.8em;
+        }
+      }
+    }
+  }
+  .btn-inner-large {
+    @include pc {
+      width: divceil(272, 10, rem);
+      height: divceil(34, 10, rem);
+    }
+    .icon-btn {
+      @include pc {
+        width: divceil(30, 10, rem);
+      }
+      > svg {
+        @include pc {
+          width: 0.8em;
+        }
+      }
+    }
+  }
+
+  .ul-tab-ht {
+    height: divceil(64, 10, rem);
+    @include sp {
+      height: divceil(131, 10, rem);
+    }
+  }
+  .ul-panel-bd {
+    border: 2px solid #000;
+  }
+  .btn-position-r {
+    @include pc {
+      padding-right: divceil(20, 10, rem);
+      justify-content: right;
+    }
+  }
+  .btn-position-l {
+    @include pc {
+      padding-left: divceil(20, 10, rem);
+      justify-content: left;
+    }
+  }
+
+  .ttl02 + .txt01 {
+    @include pc {
+      margin-top: divceil(10, 10, rem);
+    }
+  }
+  .ttl01 {
+    font-size: divceil(24, 10, rem);
+    font-weight: 300;
+    @include sp {
+      font-size: divceil(36, 10, rem);
+    }
+  }
+  .ttl02 {
+    font-size: divceil(24, 10, rem);
+    @include sp {
+      font-size: divceil(42, 10, rem);
+    }
+  }
+  .txt01 {
+    font-size: divceil(16, 10, rem);
+    line-height: divceil(26, 10, rem);
+    font-weight: 300;
+    @include sp {
+      font-size: divceil(24, 10, rem);
+      line-height: divceil(37, 10, rem);
+    }
+  }
+  .txt02 {
+    font-size: divceil(14, 10, rem);
+    font-weight: 300;
+    white-space: nowrap;
+    @include sp {
+      font-size: divceil(28, 10, rem);
+    }
+  }
+}
+
+/* lineup
+__________________________________*/
+//下層
+.ul-tab-container.lineup {
+  .panel.is-show {
+    @include sp {
+      height: divceil(1185, 10, rem);
+    }
+  }
+
+  .panel-r .layout-2 {
+    @include sp {
+      padding: divceil(62, 10, rem) divceil(48, 10, rem) divceil(112, 10, rem);
+    }
+  }
+
+  .layout-3 {
+    @include sp {
+      height: divceil(304, 10, rem);
+    }
+  }
+}
+
+//kv
+.ul-lineupTab-container {
+  @include pc {
+    width: divceil(1115, 10, rem);
+  }
+  @include pc {
+    width: divceil(1115, 10, rem);
+  }
+
+  .panel.is-show {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1fr;
+
+    @include sp {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: divceil(370, 10, rem) divceil(500, 10, rem);
+      height: auto;
+    }
+  }
+
+  .panel-l {
+    @include pc {
+      height: auto;
+    }
+    .layout-1 {
+      .tab-img {
+        height: auto;
+
+        @include pc {
+          top: divceil(10, 10, rem);
+          width: divceil(350, 10, rem);
+        }
+
+        @include sp {
+          width: divceil(250, 10, rem);
+          grid-area: 1 / 1 / 2 / 2;
+          top: divceil(65, 10, rem);
+          left: divceil(60, 10, rem);
+        }
+      }
+      .tab-img.furniture {
+        height: auto;
+
+        @include pc {
+          top: divceil(30, 10, rem);
+          left: divceil(40, 10, rem);
+          width: divceil(400, 10, rem);
+        }
+
+        @include sp {
+          width: divceil(320, 10, rem);
+          top: divceil(45, 10, rem);
+          left: divceil(0, 10, rem);
+        }
+
+        & + .tab-img-logo {
+          @include sp {
+            bottom: 0;
+            top: divceil(20, 10, rem);
+          }
+        }
+      }
+      .tab-img-logo {
+        @include pc {
+          width: divceil(80, 10, rem);
+          height: auto;
+        }
+
+        @include sp {
+          width: divceil(172, 10, rem);
+          height: divceil(30, 10, rem);
+          bottom: 0;
+          top: divceil(20, 10, rem);
+        }
+      }
+    }
+    .layout-2 {
+      @include pc {
+        padding-top: divceil(45, 10, rem);
+        padding-bottom: divceil(30, 10, rem);
+        padding-left: divceil(240, 10, rem);
+        grid-area: 1/2/2/7;
+      }
+      @include sp {
+        grid-area: 1 / 2 / 2 / 4;
+        padding-left: divceil(65, 10, rem);
+        padding-bottom: 0;
+      }
+
+      &.furniture {
+        @include sp {
+          > .ttl02 {
+            letter-spacing: -0.1em;
+            padding-bottom: divceil(32, 10, rem);
+          }
+        }
+      }
+    }
+    .layout-3 {
+      @include pc {
+        grid-area: 3/2/2/7;
+        padding-top: divceil(30, 10, rem);
+        padding-left: divceil(240, 10, rem);
+        padding-bottom: divceil(45, 10, rem);
+        height: divceil(270, 10, rem);
+        display: flex;
+        align-items: center;
+      }
+
+      @include sp {
+        grid-area: 2 / 1 / 3 / 4;
+        height: auto;
+        padding-top: 0;
+        padding-right: divceil(25, 10, rem);
+        padding-left: divceil(25, 10, rem);
+        padding-bottom: 0;
+        flex-wrap: wrap;
+        align-items: center;
+        display: flex;
+      }
+    }
+  }
+
+  .ttl02 + .txt01 {
+    @include pc {
+      margin-top: divceil(10, 10, rem);
+    }
+  }
+
+  .ttl02 {
+    font-size: divceil(38, 10, rem);
+
+    @include sp {
+      font-size: divceil(48, 10, rem);
+      line-height: 1.3;
+    }
+
+    & span {
+      display: block;
+      font-size: divceil(20, 10, rem);
+      margin-bottom: divceil(15, 10, rem);
+      text-decoration: underline;
+
+      @include sp {
+        font-size: divceil(28, 10, rem);
+        margin-bottom: divceil(28, 10, rem);
+      }
+    }
+  }
+  .txt01 {
+    font-size: divceil(16, 10, rem);
+    line-height: 2.25;
+    font-weight: 300;
+    @include sp {
+      font-size: divceil(32, 10, rem);
+      line-height: 1.4;
+    }
+  }
+}

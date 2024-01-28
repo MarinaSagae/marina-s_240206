@@ -1,0 +1,260 @@
+@use "../base/global" as *;
+@use "./text" as *;
+@use "../utility/utility" as *;
+
+.circle-card-base {
+  @extend .u-flex-col-c-center;
+}
+
+.circle-card-sm {
+  @extend .circle-card-base;
+  gap: divceil(10, 10, rem);
+  width: divceil(206, 10, rem);
+
+  @include sp {
+    width: divceil(280, 10, rem);
+    gap: divceil(20, 10, rem);
+  }
+
+  > .img {
+    opacity: 1;
+    width: divceil(206, 10, rem);
+    height: divceil(206, 10, rem);
+
+    @include sp {
+      width: divceil(270, 10, rem);
+      height: divceil(270, 10, rem);
+    }
+  }
+
+  > .txts > p {
+    text-align: center;
+  }
+}
+
+.circle-card-sm.achi {
+  .img {
+    @include pc {
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+.circle-card-md {
+  @extend .circle-card-base;
+  gap: divceil(10, 10, rem);
+  width: divceil(270, 10, rem);
+
+  @include sp {
+    width: divceil(300, 10, rem);
+    gap: divceil(30, 10, rem);
+    align-self: start;
+  }
+
+  > .img {
+    opacity: 1;
+    width: divceil(270, 10, rem);
+    height: divceil(270, 10, rem);
+
+    @include sp {
+      width: divceil(300, 10, rem);
+      height: divceil(300, 10, rem);
+    }
+  }
+
+  > .txts > .ttl {
+    @extend .c-card-ttl;
+    text-align: center;
+
+    @include sp {
+      font-size: divceil(39, 10, rem);
+      line-height: 1.5;
+    }
+  }
+
+  > .txts > p {
+    @extend .txt-16-card;
+    text-align: center;
+
+    @include sp {
+      font-size: divceil(24, 10, rem);
+      line-height: 1.4;
+      letter-spacing: -0.11em;
+    }
+  }
+}
+
+.circle-card-md.scene {
+  @include pc {
+    overflow: hidden;
+    scrollbar-width: none;
+
+    > .img.scr-target {
+      position: relative;
+    }
+
+    > .img.scr-target:hover span,
+    img.scr-target:hover span::after {
+      left: 0;
+    }
+
+    > a {
+      left: 0;
+      position: absolute;
+    }
+
+    span {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: -100%;
+      background-color: rgba(0, 133, 205, 0.8);
+      width: divceil(270, 10, rem);
+      height: divceil(270, 10, rem);
+      border-radius: 50%;
+      z-index: 5;
+      transition: all 0.4s ease;
+
+      @include sp {
+        width: divceil(300, 10, rem);
+        height: divceil(300, 10, rem);
+      }
+    }
+
+    span::after {
+      content: "";
+      display: block;
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: divceil(135, 10, rem);
+      height: divceil(178, 10, rem);
+      position: absolute;
+      top: divceil(75, 10, rem);
+      left: 25%;
+
+      @include sp {
+        width: divceil(155, 10, rem);
+        height: divceil(208, 10, rem);
+      }
+    }
+
+    .hover1::after {
+      background-image: url(../../images/top/scene01-hover.png);
+    }
+    .hover2::after {
+      background-image: url(../../images/top/scene02-hover.png);
+    }
+    .hover3::after {
+      background-image: url(../../images/top/scene03-hover.png);
+    }
+    .hover4::after {
+      background-image: url(../../images/top/scene04-hover.png);
+    }
+  }
+}
+
+.circle-card-md-col {
+  @include sp {
+    width: divceil(578, 10, rem);
+    gap: divceil(30, 10, rem);
+    align-self: auto;
+    margin-bottom: divceil(56, 10, rem);
+  }
+
+  > .img {
+    @include sp {
+      width: divceil(390, 10, rem);
+      height: divceil(390, 10, rem);
+    }
+  }
+
+  > .txts > .ttl {
+    @include sp {
+      font-size: divceil(39, 10, rem);
+      line-height: 1.5;
+    }
+  }
+
+  > .txts > p {
+    @include sp {
+      font-size: divceil(24, 10, rem);
+      line-height: 1.4;
+      letter-spacing: -0.11em;
+    }
+  }
+}
+
+.circle-card-lg {
+  width: divceil(845, 10, rem);
+  @extend .u-flex-c;
+  gap: divceil(40, 10, rem);
+
+  @include sp {
+    width: divceil(600, 10, rem);
+  }
+
+  > .img {
+    width: divceil(410, 10, rem);
+    height: divceil(410, 10, rem);
+
+    @include sp {
+      width: divceil(500, 10, rem);
+      height: divceil(500, 10, rem);
+    }
+  }
+
+  > .txts {
+    width: 50%;
+
+    @include sp {
+      width: 100%;
+    }
+  }
+
+  > .txts > .ttl {
+    @extend .c-card-ttl;
+    text-align: center;
+  }
+
+  > .txts > p {
+    text-align: left;
+
+    @include sp {
+      text-align: center;
+    }
+  }
+}
+
+#note {
+  .circle-card-md {
+    width: divceil(350, 10, rem);
+
+    @include sp {
+      width: divceil(578, 10, rem);
+    }
+  }
+  .circle-card-md > .img {
+    position: relative;
+    width: divceil(350, 10, rem);
+    height: divceil(240, 10, rem);
+    border-radius: divceil(40, 10, rem);
+    overflow: hidden;
+
+    @include sp {
+      width: divceil(578, 10, rem);
+      height: divceil(380, 10, rem);
+    }
+    & img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+  }
+}

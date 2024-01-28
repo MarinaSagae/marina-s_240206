@@ -1,0 +1,461 @@
+@use "../base/global" as *;
+@use "../utility/utility" as *;
+
+.footer {
+  overflow-x: hidden;
+}
+
+.footer {
+  padding-bottom: divceil(100, 10, rem);
+
+  @include sp {
+    padding-bottom: divceil(140, 10, rem);
+  }
+}
+
+.footer-nav {
+  width: 100%;
+  background-color: #666666;
+
+  > .inner {
+    width: divceil(1200, 10, rem);
+    margin: 0 auto;
+    padding: divceil(25, 10, rem) 0;
+    display: flex;
+    justify-content: space-between;
+
+    @include sp {
+      width: divceil(655, 10, rem);
+      padding: divceil(75, 10, rem) 0 divceil(25, 10, rem);
+      margin: 0 auto;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+}
+
+.footer-contens {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0 divceil(30, 10, rem);
+
+  @include sp {
+    flex-direction: column;
+    gap: divceil(0, 10, rem) 0;
+    margin-bottom: divceil(85, 10, rem);
+  }
+}
+
+.left-section,
+.center-section,
+.right-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @include sp {
+    align-items: normal;
+  }
+}
+
+.center-section {
+  border-left: 1px solid #fff;
+  padding-left: divceil(30, 10, rem);
+
+  @include sp {
+    border-left: unset;
+    padding-left: 0;
+  }
+}
+.line-up {
+  margin-top: divceil(30, 10, rem);
+}
+
+.main-link {
+  min-width: divceil(190, 10, rem);
+  border-bottom: 1px solid #fff;
+  padding-bottom: divceil(5, 10, rem);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  @include sp {
+    min-width: divceil(520, 10, rem);
+    justify-content: center;
+
+    &.magbithome {
+      min-width: 160%;
+      margin-left: -30%;
+      margin-right: -30%;
+    }
+  }
+
+  > .link-img {
+    background-image: url("../../images/common/icon-nav.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: divceil(14, 10, rem);
+    height: divceil(14, 10, rem);
+    margin-right: divceil(8.5, 10, rem);
+
+    @include sp {
+      width: divceil(33, 10, rem);
+      height: divceil(33, 10, rem);
+    }
+  }
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: divceil(16, 10, rem);
+  line-height: 1.3;
+
+  @include sp {
+    font-size: divceil(40, 10, rem);
+    line-height: 2.8;
+  }
+}
+
+.footer-anc {
+  color: #fff;
+  font-size: divceil(12, 10, rem);
+  line-height: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-bottom: divceil(10, 10, rem);
+  }
+
+  @include sp {
+    font-size: divceil(36, 10, rem);
+    min-width: divceil(300, 10, rem);
+    line-height: 2.3;
+  }
+
+  > .link-img {
+    background-image: url("../../images/common/icon-nav.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: divceil(14, 10, rem);
+    height: divceil(14, 10, rem);
+    margin-right: divceil(8.5, 10, rem);
+
+    @include sp {
+      width: divceil(33, 10, rem);
+      height: divceil(33, 10, rem);
+    }
+  }
+}
+
+.sub-menu {
+  margin-top: divceil(20, 10, rem);
+
+  @include sp {
+    display: flex;
+    flex-direction: column;
+    width: divceil(480, 10, rem);
+    margin: 0 auto;
+
+    &:not(.sub-menu-line-up) {
+      align-items: center;
+    }
+  }
+}
+
+.logo-section {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  @include sp {
+    margin-left: auto;
+  }
+}
+
+.main-logo {
+  width: divceil(186, 10, rem);
+  height: divceil(32, 10, rem);
+
+  @include sp {
+    width: divceil(220, 10, rem);
+    height: divceil(38, 10, rem);
+  }
+}
+
+.footer-info {
+  > .info-inner {
+    background-color: #cccccc;
+    color: #000;
+    font-size: divceil(17, 10, rem);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: divceil(25, 10, rem) 0;
+
+    @include sp {
+      flex-direction: column;
+      font-size: divceil(34, 10, rem);
+      padding: divceil(65, 10, rem) 0 divceil(45, 10, rem);
+    }
+  }
+
+  > .contact-inner {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.footer-info-about {
+  margin-right: divceil(32, 10, rem);
+
+  @include sp {
+    margin-right: 0;
+    margin-bottom: divceil(60, 10, rem);
+
+    > a {
+      border-bottom: solid 1px #000;
+      padding-bottom: divceil(10, 10, rem);
+    }
+  }
+}
+.footer-info-list {
+  display: flex;
+  flex-direction: row;
+
+  > li {
+    &:first-child {
+      padding-right: divceil(14, 10, rem);
+    }
+    &:not(:first-child) {
+      padding: 0 divceil(14, 10, rem);
+    }
+    &:not(:last-child) {
+      border-right: 1px solid #000;
+    }
+  }
+
+  @include sp {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: divceil(40, 10, rem) 0;
+    width: divceil(612, 10, rem);
+  }
+}
+
+.contact-contens {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0 divceil(30, 10, rem);
+  padding: divceil(40, 10, rem) 0;
+
+  @include sp {
+    flex-direction: column;
+    justify-content: center;
+    width: divceil(612, 10, rem);
+  }
+
+  .btn {
+    @include sp {
+      margin-bottom: divceil(56, 10, rem);
+    }
+  }
+}
+.contact-contens-txt {
+  font-size: divceil(20, 10, rem);
+  line-height: 1.2;
+
+  @include sp {
+    font-size: divceil(40, 10, rem);
+    margin-bottom: divceil(18, 10, rem);
+  }
+}
+
+.contact-mail {
+  font-size: divceil(33, 10, rem);
+
+  @include sp {
+    font-size: divceil(45, 10, rem);
+  }
+
+  a {
+    display: inline-block;
+    @include sp {
+      margin-bottom: divceil(20, 10, rem);
+    }
+  }
+
+  &::before {
+    content: "";
+    display: inline-flex;
+    background-image: url(../../images/common/icon-mail.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: divceil(25, 10, rem);
+    height: divceil(17, 10, rem);
+    vertical-align: middle;
+
+    @include sp {
+      width: divceil(50, 10, rem);
+      height: divceil(34, 10, rem);
+    }
+  }
+
+  > span {
+    font-size: divceil(14, 10, rem);
+    display: block;
+
+    @include sp {
+      font-size: divceil(32, 10, rem);
+      text-align: center;
+    }
+  }
+}
+
+.footer-policy {
+  background: #fff;
+  padding: divceil(10, 10, rem) 0;
+
+  @include sp {
+    padding: divceil(50, 10, rem) 0 0;
+  }
+
+  > .policy-inner {
+    width: divceil(1200, 10, rem);
+    font-size: divceil(14, 10, rem);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    @include sp {
+      width: divceil(655, 10, rem);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+.policy-list {
+  display: flex;
+  flex-direction: row;
+
+  > li {
+    &:first-child {
+      padding-right: divceil(14, 10, rem);
+    }
+    &:not(:first-child) {
+      padding: 0 divceil(14, 10, rem);
+    }
+    &:not(:last-child) {
+      border-right: 1px solid #000;
+
+      @include sp {
+        margin-bottom: divceil(20, 10, rem);
+      }
+    }
+
+    @include sp {
+      border-right: none !important;
+      padding-right: 0 !important;
+
+      &::after {
+        content: "";
+        display: flex;
+        margin: divceil(25, 10, rem) auto 0 auto;
+        width: divceil(50, 10, rem);
+        height: 2px;
+        background-color: #000;
+      }
+    }
+  }
+
+  @include sp {
+    flex-direction: column;
+    align-items: center;
+    font-size: divceil(28, 10, rem);
+    margin-bottom: divceil(60, 10, rem);
+  }
+}
+
+.footer-copyright {
+  font-size: divceil(10, 10, rem);
+
+  @include sp {
+    font-size: divceil(20, 10, rem);
+  }
+}
+
+.require-fixed {
+  opacity: 1;
+  position: fixed;
+  z-index: 150;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(70, 70, 70, 0.5);
+}
+.require-fixed-inner {
+  display: flex;
+  justify-content: center;
+  gap: 0 divceil(50, 10, rem);
+  padding: divceil(20, 10, rem) 0;
+
+  @include sp {
+    padding: 0;
+    gap: 0;
+
+    > .btn {
+      width: 50%;
+    }
+  }
+}
+
+.footer {
+  .main-link.magbithome,
+  .main-link.bugsolution,
+  .footer-anc {
+    position: relative;
+  }
+
+  .main-link.magbithome::before,
+  .main-link.bugsolution::before .footer-anc::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    bottom: -10px;
+    left: -10px;
+    background: transparent;
+    z-index: -1;
+    // transition: background 0.3s;
+  }
+
+  // .footer-link.home::before {
+  //   width: divceil(543, 10, rem);
+
+  //   @include sp {
+  //     width: 100vw;
+  //   }
+  // }
+
+  .main-link.magbithome:hover,
+  .main-link.bugsolution:hover,
+  .footer-anc:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.footer-info,
+.footer-policy {
+  li:hover {
+    text-decoration: underline;
+  }
+}

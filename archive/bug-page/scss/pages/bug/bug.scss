@@ -1,0 +1,813 @@
+@charset "UTF-8";
+@use '../../base/global' as *;
+@use '../../utility/utility' as *;
+@use '../../base/animation' as *;
+@use '../../modules/text' as *;
+@use '../../modules/swiper' as *;
+@use '../../modules/tab' as *;
+
+body {
+  background: #fff;
+}
+
+// ハンバーガー
+.header_hamburger a {
+  border-color: #000;
+}
+.header_hamburger a > span > span {
+  background-color: #000;
+}
+
+.u-line {
+  text-decoration: underline;
+}
+
+// KV
+.kv {
+  &__bg {
+    margin: divceil(210, 10, rem) auto 0;
+    max-width: divceil(1890, 10, rem);
+    width: 100%;
+    height: divceil(1029, 10, rem);
+    background-position: 22% center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+    @include sp {
+      margin: divceil(900, 10, rem) auto 0;
+      max-width: 100%;
+      height: divceil(977, 10, rem);
+      background-image: url(../../../images/bug/kv_bg-sp.jpg);
+      background-position: center;
+    }
+    &.bg-as {
+      background-image: url(../../../images/bug/kv_bg-pc.jpg);
+    }
+    &.is-bg-white {
+      background-image: url(../../../images/bug/kv_bg_white-pc.jpg);
+    }
+  }
+  .bug-num-box {
+    max-width: divceil(1200, 10, rem);
+    position: relative;
+    .bug-num {
+      width: divceil(190, 10, rem);
+      height: divceil(190, 10, rem);
+      display: block;
+      position: absolute;
+      &:hover:after {
+        content: "";
+        width: divceil(280, 10, rem);
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: absolute;
+        animation-name: kv-bug;
+        animation-duration: 0.7s;
+        animation-fill-mode: forwards;
+      }
+      &.bug01 {
+        top: divceil(320, 10, rem);
+        left: divceil(410, 10, rem);
+        &:hover:after {
+          background-image: url(../../../images/bug/kv_bug01.png);
+          top: 0;
+          left: divceil(-25, 10, rem);
+        }
+      }
+      &.bug02 {
+        top: divceil(360, 10, rem);
+        right: divceil(50, 10, rem);
+        &:hover:after {
+          background-image: url(../../../images/bug/kv_bug02.png);
+          top: 0;
+          left: divceil(-50, 10, rem);
+        }
+      }
+      &.bug03 {
+        top: divceil(220, 10, rem);
+        left: divceil(620, 10, rem);
+        &:hover:after {
+          background-image: url(../../../images/bug/kv_bug03.png);
+          top: divceil(30, 10, rem);
+          left: divceil(-50, 10, rem);
+        }
+      }
+      &.bug04 {
+        width: divceil(150, 10, rem);
+        top: divceil(70, 10, rem);
+        right: divceil(90, 10, rem);
+        &:hover:after {
+          background-image: url(../../../images/bug/kv_bug04.png);
+          top: 0;
+          right: divceil(-90, 10, rem);
+        }
+      }
+      &.bug05 {
+        width: divceil(150, 10, rem);
+        top: divceil(320, 10, rem);
+        left: divceil(210, 10, rem);
+        &:hover:after {
+          background-image: url(../../../images/bug/kv_bug05.png);
+          top: 0;
+          left: divceil(-50, 10, rem);
+        }
+      }
+      &.bug06 {
+        top: divceil(440, 10, rem);
+        right: divceil(-160, 10, rem);
+        &:hover:after {
+          background-image: url(../../../images/bug/kv_bug06.png);
+          top: divceil(-10, 10, rem);
+          right: divceil(-50, 10, rem);
+        }
+      }
+      &.bug07 {
+        top: divceil(100, 10, rem);
+        right: divceil(-120, 10, rem);
+        &:hover:after {
+          background-image: url(../../../images/bug/kv_bug07.png);
+          top: 0;
+          right: divceil(-50, 10, rem);
+        }
+      }
+      &.bug08 {
+        width: divceil(150, 10, rem);
+        top: divceil(110, 10, rem);
+        right: divceil(240, 10, rem);
+        &:hover:after {
+          background-image: url(../../../images/bug/kv_bug08.png);
+          top: divceil(60, 10, rem);
+          right: divceil(-100, 10, rem);
+        }
+      }
+      &.bug09 {
+        width: divceil(150, 10, rem);
+        top: divceil(540, 10, rem);
+        left: divceil(550, 10, rem);
+        &:hover:after {
+          background-image: url(../../../images/bug/kv_bug09.png);
+          top: divceil(-90, 10, rem);
+          left: 0;
+        }
+      }
+    }
+  }
+  @keyframes kv-bug {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  &__ttl-block {
+    margin: 0 auto;
+    position: relative;
+    @include sp {
+      max-width: divceil(650, 10, rem);
+    }
+  }
+  &__ttl {
+    width: divceil(676, 10, rem);
+    height: auto;
+    position: absolute;
+    top: divceil(-120, 10, rem);
+    left: divceil(150, 10, rem);
+    @include sp {
+      width: 100%;
+      top: divceil(-800, 10, rem);
+      left: 0;
+    }
+  }
+  &__txt {
+    font-weight: 600;
+    position: absolute;
+    top: divceil(-120, 10, rem);
+    left: divceil(490, 10, rem);
+    opacity: 0;
+    @include sp {
+      text-align: center;
+      font-weight: 300;
+      top: divceil(-470, 10, rem);
+      left: 0;
+    }
+    > h2 {
+      font-size: divceil(32, 10, rem);
+      @include sp {
+        font-size: divceil(60, 10, rem);
+        line-height: divceil(80, 10, rem);
+      }
+    }
+    > p {
+      margin-top: divceil(5, 10, rem);
+      font-size: divceil(14, 10, rem);
+      line-height: divceil(21, 10, rem);
+      @include sp {
+        margin-top: divceil(25, 10, rem);
+        font-size: divceil(32, 10, rem);
+        line-height: divceil(58, 10, rem);
+      }
+    }
+  }
+}
+
+// MOVIE
+.movie {
+  margin-top: divceil(-310, 10, rem);
+  position: relative;
+  z-index: 150;
+  @include sp {
+    margin-top: divceil(-250, 10, rem);
+  }
+  &__bg {
+    padding: divceil(40, 10, rem) 0;
+    background-color: rgba(246, 245, 245, 0.9);
+    @include sp {
+      padding: divceil(45, 10, rem) 0;
+    }
+  }
+  &__box {
+    > h3 {
+      text-align: center;
+      font-weight: 300;
+      font-size: divceil(46, 10, rem);
+    }
+    > figure {
+      margin: divceil(20, 10, rem) auto 0;
+      width: divceil(460, 10, rem);
+      height: auto;
+      position: relative;
+      z-index: 1;
+    }
+  }
+}
+// モーダル
+.modal-open {
+  cursor: pointer;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  max-width: 100%;
+  max-height: 100%;
+  min-height: auto;
+  min-width: auto;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 0;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+}
+iframe {
+  position: absolute;
+  top: 0%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-height: calc(100% - 9rem);
+  transform: scale(1);
+  z-index: 1;
+  @include sp {
+    top: 0;
+    max-height: unset;
+  }
+}
+/* モーダルの擬似要素の指定 */
+// .modal:before {
+//   content: "";
+//   display: inline-block;
+//   vertical-align: middle;
+//   height: 100%;
+//   margin-left: -0.2em;
+// }
+/* クラスが追加された時の指定 */
+.modal.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+/* モーダル内側の指定 */
+.modal-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+}
+/* モーダルを閉じるボタンの指定 */
+.js-modal-close {
+  position: absolute;
+  top: 0%;
+  left: 112%;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  background: url(../../../images/bug/btn-cls.png) no-repeat;
+  background-size: 3rem;
+  z-index: 150;
+
+  @include sp {
+    top: -12%;
+    left: 95%;
+  }
+}
+/* モーダルのコンテンツ部分の指定 */
+.modal-content {
+  position: relative;
+  width: 60%;
+  height: 45vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include sp {
+    width: 80%;
+    height: 68vw;
+  }
+}
+.youtube {
+  position: relative;
+  width: 100%;
+  height: 45vw;
+  border-radius: 0;
+
+  @include sp {
+    height: 68vw;
+  }
+}
+
+// KVとメインコンテンツの余白
+.movie + .main-c {
+  margin: divceil(80, 10, rem) 0 divceil(160, 10, rem);
+  @include sp {
+    margin: divceil(75, 10, rem) 0 divceil(150, 10, rem);
+  }
+}
+// BUGコンテンツ
+.bug-block {
+  margin: 0 auto;
+  padding: divceil(50, 10, rem);
+  max-width: divceil(1000, 10, rem);
+  width: 100%;
+  background-color: #f6f5f5;
+  border-radius: divceil(30, 10, rem);
+  @include sp {
+    padding: divceil(30, 10, rem) divceil(35, 10, rem);
+    max-width: 100%;
+    border-radius: unset;
+  }
+  + .bug-block {
+    margin-top: divceil(100, 10, rem);
+    @include sp {
+      margin-top: divceil(75, 10, rem);
+    }
+  }
+  // BUG
+  .bug {
+    &__ttl-box {
+      display: flex;
+      align-items: center;
+      @include sp {
+        display: block;
+      }
+      > img {
+        width: divceil(140, 10, rem);
+        height: auto;
+        @include sp {
+          width: divceil(210, 10, rem);
+        }
+      }
+      > h3 {
+        padding-bottom: divceil(10, 10, rem);
+        font-size: divceil(28, 10, rem);
+        font-weight: 500;
+        color: #e73743;
+        @include pc {
+          letter-spacing: -0.05em;
+        }
+        @include sp {
+          padding: divceil(25, 10, rem) 0 divceil(30, 10, rem) divceil(10, 10, rem);
+          background-color: #f6f5f5;
+          font-size: divceil(44, 10, rem);
+          line-height: divceil(56, 10, rem);
+          letter-spacing: -0.07em;
+          position: relative;
+          top: divceil(-30, 10, rem);
+        }
+      }
+      .fnt01 {
+        @include pc {
+          font-size: divceil(24, 10, rem);
+        }
+      }
+      .ls01 {
+        @include pc {
+          letter-spacing: -0.3em;
+        }
+      }
+    }
+    &__txt {
+      margin: divceil(-18, 10, rem) auto 0;
+      padding: divceil(40, 10, rem) divceil(65, 10, rem);
+      max-width: 900px;
+      width: 100%;
+      background-color: #fff;
+      border-radius: divceil(20, 10, rem);
+      position: relative;
+      z-index: 1;
+      @include sp {
+        margin: 0;
+        padding: divceil(30, 10, rem);
+        max-width: divceil(680, 10, rem);
+      }
+      &::after {
+        content: "";
+        width: divceil(230, 10, rem);
+        height: divceil(230, 10, rem);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: absolute;
+        top: divceil(15, 10, rem);
+        right: divceil(-10, 10, rem);
+        @include sp {
+          width: divceil(270, 10, rem);
+          height: divceil(270, 10, rem);
+          top: divceil(-255, 10, rem);
+          right: divceil(-20, 10, rem);
+        }
+      }
+      &.img-bug01 {
+        &::after {
+          background-image: url(../../../images/bug/img_bug01.png);
+        }
+      }
+      &.img-bug02 {
+        &::after {
+          background-image: url(../../../images/bug/img_bug02.png);
+        }
+      }
+      &.img-bug03 {
+        &::after {
+          background-image: url(../../../images/bug/img_bug03.png);
+        }
+      }
+      &.img-bug04 {
+        &::after {
+          background-image: url(../../../images/bug/img_bug04.png);
+        }
+      }
+      &.img-bug05 {
+        &::after {
+          background-image: url(../../../images/bug/img_bug05.png);
+        }
+      }
+      &.img-bug06 {
+        &::after {
+          background-image: url(../../../images/bug/img_bug06.png);
+        }
+      }
+      &.img-bug07 {
+        &::after {
+          background-image: url(../../../images/bug/img_bug07.png);
+        }
+      }
+      &.img-bug08 {
+        &::after {
+          background-image: url(../../../images/bug/img_bug08.png);
+        }
+      }
+      &.img-bug09 {
+        &::after {
+          background-image: url(../../../images/bug/img_bug09.png);
+        }
+      }
+      > h4 {
+        margin-bottom: divceil(15, 10, rem);
+        padding-bottom: divceil(15, 10, rem);
+        border-bottom: 1px solid #000;
+        font-size: divceil(24, 10, rem);
+        font-weight: 500;
+        color: #3e3a39;
+        @include sp {
+          margin-bottom: divceil(10, 10, rem);
+          padding-bottom: divceil(10, 10, rem);
+          font-size: divceil(34, 10, rem);
+        }
+      }
+      > p {
+        font-size: divceil(20, 10, rem);
+        font-weight: 300;
+        line-height: divceil(30, 10, rem);
+        letter-spacing: -0.1em;
+        @include sp {
+          font-size: divceil(28, 10, rem);
+          line-height: divceil(44, 10, rem);
+        }
+      }
+    }
+    + .solution {
+      margin-top: divceil(40, 10, rem);
+      @include sp {
+        margin-top: divceil(30, 10, rem);
+      }
+    }
+  }
+
+  // SOLUTION
+  .solution {
+    &__ttl-box {
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      z-index: 1;
+      @include sp {
+        display: block;
+
+        &::after {
+          @include sp {
+            content: "▼";
+            font-size: divceil(35, 10, rem);
+            color: #3e3a39;
+            position: absolute;
+            top: divceil(38, 10, rem);
+            right: divceil(45, 10, rem);
+          }
+        }
+        &.r01 {
+          &::after {
+            @include sp {
+              right: divceil(38, 10, rem);
+            }
+          }
+        }
+        &.is-open {
+          @include sp {
+            &::after {
+              content: "▲";
+            }
+          }
+        }
+      }
+      .acc-arrow {
+        @include sp {
+          position: relative;
+        }
+        // &::after {
+        //   @include sp {
+        //     content: "▼";
+        //     font-size: divceil(35, 10, rem);
+        //     color: #3e3a39;
+        //     position: absolute;
+        //     top: divceil(-75, 10, rem);
+        //     right: divceil(-635, 10, rem);
+        //   }
+        // }
+        // &.is-open {
+        //   @include sp {
+        //     &::after {
+        //       content: "▲";
+        //     }
+        //   }
+        // }
+        > img {
+          width: divceil(156, 10, rem);
+          height: auto;
+          @include sp {
+            width: divceil(680, 10, rem);
+          }
+        }
+      }
+      // .r01 {
+      //   &::after {
+      //     @include sp {
+      //       right: divceil(-645, 10, rem);
+      //     }
+      //   }
+      // }
+      .acc-h3-show {
+        &.is-show {
+          @include sp {
+            display: block;
+          }
+        }
+      }
+      > h3 {
+        padding: divceil(12, 10, rem);
+        background-color: #fff;
+        font-size: divceil(28, 10, rem);
+        font-weight: 700;
+        color: #3e3a39;
+        @include pc {
+          border: 2px solid #3e3a39;
+          border-radius: 0 10px 10px 0;
+        }
+        @include sp {
+          margin-top: divceil(-10, 10, rem);
+          padding: divceil(35, 10, rem) 0;
+          text-align: center;
+          font-size: divceil(42, 10, rem);
+          line-height: divceil(58, 10, rem);
+          display: none;
+        }
+      }
+      .ht01 {
+        @include pc {
+          padding: divceil(15, 10, rem);
+        }
+      }
+    }
+    &__img-box {
+      margin: divceil(-20, 10, rem) calc(50% - 50vw) 0;
+      width: 100vw;
+      @include sp {
+        margin: 0 calc(50% - 50vw);
+      }
+      .border {
+        margin: 0 auto;
+        border: 3px solid #3e3a39;
+        @include sp {
+          border: 2px solid #3e3a39;
+        }
+        &.drawLine {
+          animation-name: drawLine;
+          animation-duration: 1s;
+          animation-timing-function: ease-in-out;
+          animation-fill-mode: forwards;
+        }
+        @keyframes drawLine {
+          0% {
+            width: 0;
+            opacity: 0;
+          }
+
+          100% {
+            width: 100%;
+            opacity: 1;
+          }
+        }
+      }
+      .sol-img {
+        > img {
+          @include sp {
+            width: 100%;
+            height: divceil(590, 10, rem);
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+  .acc-box {
+    @include sp {
+      background-color: #fff;
+    }
+  }
+  // HOW TO SOLVE
+  .solve {
+    margin-top: divceil(30, 10, rem);
+    > img {
+      width: divceil(119, 10, rem);
+      height: auto;
+      position: relative;
+      z-index: 1;
+      @include sp {
+        padding-left: divceil(30, 10, rem);
+        width: divceil(238, 10, rem);
+      }
+    }
+    &__txt {
+      margin: divceil(-10, 10, rem) auto 0;
+      padding: divceil(50, 10, rem) divceil(65, 10, rem);
+      background-color: #fff;
+      border-radius: divceil(20, 10, rem);
+      @include sp {
+        margin: 0;
+        padding: divceil(40, 10, rem) divceil(30, 10, rem);
+      }
+      > h4 {
+        font-size: divceil(24, 10, rem);
+        font-weight: 500;
+        line-height: divceil(40, 10, rem);
+        color: #3e3a39;
+        @include sp {
+          font-size: divceil(34, 10, rem);
+          line-height: divceil(48, 10, rem);
+        }
+      }
+      > p {
+        margin-top: divceil(20, 10, rem);
+        font-size: divceil(20, 10, rem);
+        font-weight: 300;
+        line-height: divceil(30, 10, rem);
+        @include sp {
+          font-size: divceil(28, 10, rem);
+          line-height: divceil(40, 10, rem);
+        }
+      }
+    }
+    .col01 {
+      margin-top: divceil(25, 10, rem);
+      display: grid;
+      grid-template-columns: repeat(2, divceil(370, 10, rem));
+      column-gap: divceil(30, 10, rem);
+      @include sp {
+        margin-top: divceil(30, 10, rem);
+        grid-template-columns: 1fr;
+        row-gap: divceil(43, 10, rem);
+      }
+      > figure {
+        > img {
+          width: divceil(370, 10, rem);
+          height: auto;
+          @include sp {
+            width: divceil(620, 10, rem);
+          }
+        }
+        > figcaption {
+          margin-top: divceil(20, 10, rem);
+          font-size: divceil(16, 10, rem);
+          line-height: divceil(20, 10, rem);
+          font-weight: 300;
+          @include sp {
+            margin-top: divceil(15, 10, rem);
+            font-size: divceil(28, 10, rem);
+            line-height: divceil(40, 10, rem);
+          }
+          > span {
+            margin-bottom: divceil(15, 10, rem);
+            display: block;
+            font-size: divceil(18, 10, rem);
+            font-weight: bold;
+            @include sp {
+              margin-bottom: divceil(10, 10, rem);
+              font-size: divceil(32, 10, rem);
+            }
+          }
+        }
+      }
+    }
+    .col02 {
+      margin-top: divceil(25, 10, rem);
+      @include sp {
+        margin-top: divceil(30, 10, rem);
+      }
+      > figure {
+        display: flex;
+        align-items: end;
+        column-gap: divceil(20, 10, rem);
+        @include sp {
+          display: block;
+        }
+        &.center {
+          justify-content: center;
+        }
+        > img {
+          width: divceil(450, 10, rem);
+          height: auto;
+          @include sp {
+            width: divceil(620, 10, rem);
+          }
+        }
+        > figcaption {
+          font-size: divceil(16, 10, rem);
+          line-height: divceil(20, 10, rem);
+          font-weight: 300;
+          @include sp {
+            margin-top: divceil(15, 10, rem);
+            font-size: divceil(28, 10, rem);
+            line-height: divceil(40, 10, rem);
+          }
+          > span {
+            margin-bottom: divceil(15, 10, rem);
+            display: block;
+            font-size: divceil(18, 10, rem);
+            font-weight: 700;
+            @include sp {
+              margin-bottom: divceil(10, 10, rem);
+              font-size: divceil(32, 10, rem);
+            }
+          }
+        }
+      }
+    }
+  }
+  .acc-up-btn {
+    @include sp {
+      padding: divceil(5, 10, rem) 0;
+      background-color: #3e3a39;
+      border-radius: 0 0 divceil(20, 10, rem) divceil(20, 10, rem);
+      text-align: center;
+      font-size: divceil(30, 10, rem);
+      color: #fff;
+    }
+  }
+}

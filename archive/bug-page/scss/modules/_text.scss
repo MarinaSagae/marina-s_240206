@@ -1,0 +1,181 @@
+@use "../base/global" as *;
+
+/*Title*/
+.ttl {
+  font-size: divceil(22, 10, rem);
+  line-height: 1.5;
+}
+
+@include pc {
+  .sec-ttl {
+    font-size: divceil(41, 10, rem);
+    line-height: 1.3;
+    font-weight: 400;
+  }
+  .sec-ttl-lg {
+    font-size: divceil(52, 10, rem);
+    line-height: 1.38;
+    font-weight: 400;
+
+  }
+  .sec-ttl-xlg {
+    font-size: divceil(60, 10, rem);
+    line-height: 1.5;
+    font-weight: 400;
+
+  }
+  .ttl-40 {
+    font-size: divceil(40, 10, rem);
+    line-height: 1.5;
+    font-weight: 400;
+    }
+}
+
+@include sp {
+  .sec-ttl-xxlg-sp {
+    font-size: divceil(81, 10, rem);
+    line-height: 1.5;
+    font-weight: 400;
+
+  }
+  .sec-ttl-xlg-sp {
+    font-size: divceil(76, 10, rem);
+    line-height: 1.5;
+    font-weight: 400;
+
+  }
+  .sec-ttl-lg-sp {
+    font-size: divceil(52, 10, rem);
+    line-height: 1.38;
+    font-weight: 400;
+
+  }
+  .ttl-42-sp {
+    font-size: divceil(42, 10, rem);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  .ttl-38-sp {
+    font-size: divceil(38, 10, rem);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+}
+
+.card-ttl {
+  font-size: divceil(30, 10, rem);
+  line-height: 1.38;
+  font-weight: 400;
+
+}
+
+.c-card-ttl {
+  font-size: divceil(26, 10, rem);
+  line-height: 2.3;
+  font-weight: 400;
+}
+
+
+@include pc {
+  .ttl-28 {
+    font-size: divceil(28, 10, rem);
+    line-height: 1.5;
+  }
+}
+
+
+.ttl-32 {
+  font-size: divceil(32, 10, rem);
+  line-height: 1.38;
+}
+
+.note-ttl {
+  width: divceil(300, 10, rem);
+
+  @include sp {
+    width: divceil(420, 10, rem);
+  }
+}
+
+/*text*/
+.txt-30 {
+  font-size: divceil(30, 10, rem);
+  line-height: 1.5;
+  font-weight:300;
+}
+
+@include pc {
+  .txt-20 {
+    font-size: divceil(20, 10, rem);
+    line-height: 1.8;
+    font-weight:300;
+  }
+}
+
+.txt-18 {
+  font-size: divceil(18, 10, rem);
+  line-height: 1.9;
+  font-weight:300;
+
+  @include sp {
+    font-size: divceil(32, 10, rem);
+  }
+}
+
+.txt-16-card {
+  font-size: divceil(16, 10, rem);
+  line-height: 1.5;
+  font-weight:300;
+}
+
+.txt-14-card {
+  font-size: divceil(14, 10, rem);
+  line-height: 1.5;
+  font-weight:300;
+
+  @include sp {
+    font-size: divceil(24, 10, rem);
+  }
+}
+
+/*btn-txt*/
+
+.txt-21 {
+  font-size: divceil(21, 10, rem);
+  line-height: 1.5;
+  font-weight:300;
+}
+.txt-14 {
+  font-size: divceil(14, 10, rem);
+  line-height: 1.5;
+  font-weight:300;
+}
+
+@include sp {
+  .txt-38-sp {
+    font-size: divceil(38, 10, rem);
+    line-height: 1.5;
+    font-weight:300;
+  }
+  .txt-31-sp {
+    font-size: divceil(31, 10, rem);
+    line-height: 1.5;
+    font-weight:300;
+  }
+  .txt-28-sp {
+    font-size: divceil(28, 10, rem);
+    line-height: 1.6;
+    font-weight:300;
+  }
+
+  .txt-24-sp {
+    font-size: divceil(24, 10, rem);
+    line-height: 1.8;
+    font-weight:300;
+  }
+  .txt-20-sp {
+    font-size: divceil(20, 10, rem);
+    line-height: 1.5;
+    font-weight:300;
+  }
+}

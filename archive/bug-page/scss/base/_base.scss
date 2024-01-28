@@ -1,0 +1,39 @@
+@use "./global" as *;
+
+html {
+  scroll-behavior: smooth;
+  @include pc {
+    font-size: min(#{divceil(10, $pcMax, vw)}, 10px);
+  }
+
+  @include sp {
+    font-size: divceil(10, $spMax, vw);
+  }
+}
+
+body {
+  background: #fff;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.pc-only {
+  @include sp {
+    display: none !important;
+  }
+}
+
+.sp-only {
+  @include pc {
+    display: none !important;
+  }
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+a {
+  transition: all 0.4s ease;
+}

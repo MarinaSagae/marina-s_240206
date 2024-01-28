@@ -1,0 +1,395 @@
+@use "../base/global" as *;
+
+.btn-inner-base {
+  display: flex;
+  align-items: center;
+  gap: divceil(45, 10, rem) 0;
+  text-align: center;
+  overflow-wrap: anywhere;
+
+  > .icon-btn {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    overflow: hidden;
+  }
+
+  &.opacity {
+    @include pc {
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+.btn-inner-rev {
+  flex-direction: row-reverse;
+}
+
+.btn-inner-auto {
+  @extend .btn-inner-base;
+  width: 100%;
+  min-width: divceil(190, 10, rem);
+  height: divceil(60, 10, rem);
+
+  > .icon-btn {
+    width: divceil(38, 10, rem);
+
+    @include sp {
+      width: divceil(108, 10, rem);
+    }
+
+    @include sp {
+      svg {
+        width: divceil(24, 10, rem);
+        height: divceil(24, 10, rem);
+      }
+    }
+  }
+  > .icon-link {
+    width: divceil(68, 10, rem);
+  }
+
+  @include sp {
+    width: divceil(350, 10, rem);
+    height: divceil(90, 10, rem);
+
+    > .icon-link {
+      width: 30%;
+      svg {
+        width: divceil(24, 10, rem);
+        height: divceil(24, 10, rem);
+      }
+    }
+  }
+}
+
+.icon-txt-18 {
+  font-size: divceil(18, 10, rem);
+}
+
+.btn-inner-sm {
+  @extend .btn-inner-base;
+  width: divceil(233, 10, rem);
+  height: divceil(60, 10, rem);
+
+  > .icon-btn {
+    width: divceil(78, 10, rem);
+
+    @include sp {
+      width: divceil(108, 10, rem);
+    }
+
+    @include sp {
+      svg {
+        width: divceil(24, 10, rem);
+        height: divceil(24, 10, rem);
+      }
+    }
+  }
+  > .icon-btn-sm {
+    width: divceil(38, 10, rem);
+
+    @include sp {
+      width: divceil(108, 10, rem);
+    }
+
+    @include sp {
+      svg {
+        width: divceil(24, 10, rem);
+        height: divceil(24, 10, rem);
+      }
+    }
+  }
+  > .icon-btn-sm-2 {
+    width: divceil(48, 10, rem);
+
+    @include sp {
+      width: divceil(108, 10, rem);
+    }
+
+    @include sp {
+      svg {
+        width: divceil(24, 10, rem);
+        height: divceil(24, 10, rem);
+      }
+    }
+  }
+  > .icon-btn-md {
+    width: divceil(58, 10, rem);
+
+    @include sp {
+      width: divceil(108, 10, rem);
+    }
+
+    @include sp {
+      svg {
+        width: divceil(24, 10, rem);
+        height: divceil(24, 10, rem);
+      }
+    }
+  }
+  > .icon-link {
+    width: divceil(68, 10, rem);
+  }
+
+  @include sp {
+    width: divceil(350, 10, rem);
+    height: divceil(90, 10, rem);
+
+    > .icon-link {
+      width: 30%;
+      svg {
+        width: divceil(24, 10, rem);
+        height: divceil(24, 10, rem);
+      }
+    }
+  }
+}
+
+.btn-inner-sm-top,
+#luxy .btn-inner-md-top {
+  @include sp {
+    width: divceil(590, 10, rem);
+    height: divceil(90, 10, rem);
+  }
+}
+.btn-inner-md {
+  @extend .btn-inner-base;
+  width: divceil(333, 10, rem);
+  height: divceil(60, 10, rem);
+
+  > .icon-btn {
+    width: divceil(58, 10, rem);
+  }
+
+  @include sp {
+    width: divceil(560, 10, rem);
+    height: divceil(90, 10, rem);
+    gap: 0 divceil(45, 10, rem);
+
+    > .icon-btn {
+      width: 15%;
+      svg {
+        width: divceil(24, 10, rem);
+        height: divceil(24, 10, rem);
+      }
+    }
+  }
+
+  &.opacity {
+    @include pc {
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+.btn-inner-large {
+  @extend .btn-inner-base;
+  width: divceil(394, 10, rem);
+  height: divceil(60, 10, rem);
+
+  > .icon-btn {
+    width: divceil(58, 10, rem);
+  }
+  > .icon-btn-sm {
+    width: divceil(28, 10, rem);
+    height: divceil(15, 10, rem);
+  }
+
+  > .icon-btn-lg {
+    width: divceil(90, 10, rem);
+    display: flex;
+    justify-content: flex-end;
+    padding-right: divceil(30, 10, rem);
+
+    @include sp {
+      width: divceil(130, 10, rem);
+
+      svg {
+        width: divceil(24, 10, rem);
+        height: divceil(24, 10, rem);
+      }
+    }
+  }
+
+  > .icon-btn-lineup {
+    width: divceil(58, 10, rem);
+  }
+
+  @include sp {
+    width: divceil(590, 10, rem);
+    height: divceil(90, 10, rem);
+
+    > .icon-btn {
+      width: 15%;
+      svg {
+        width: divceil(24, 10, rem);
+        height: divceil(24, 10, rem);
+      }
+    }
+    > .icon-btn-lineup {
+      width: 8%;
+      svg {
+        width: divceil(24, 10, rem);
+        height: divceil(24, 10, rem);
+      }
+    }
+  }
+
+  &.opacity {
+    @include pc {
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+.btn-inner-Xlarge {
+  @extend .btn-inner-base;
+  width: divceil(433, 10, rem);
+  height: divceil(60, 10, rem);
+
+  > .icon-btn {
+    width: divceil(58, 10, rem);
+  }
+  > .icon-btn-sm {
+    width: divceil(28, 10, rem);
+    height: divceil(15, 10, rem);
+  }
+  > .icon-btn-lineup {
+    width: divceil(58, 10, rem);
+  }
+
+  @include sp {
+    width: divceil(590, 10, rem);
+    height: divceil(120, 10, rem);
+
+    > .icon-btn {
+      width: 15%;
+      svg {
+        width: divceil(24, 10, rem);
+        height: divceil(24, 10, rem);
+      }
+    }
+    > .icon-btn-lineup {
+      width: 8%;
+      svg {
+        width: divceil(24, 10, rem);
+        height: divceil(24, 10, rem);
+      }
+    }
+  }
+
+  &.opacity {
+    @include pc {
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+.btn-inner-contact {
+  @extend .btn-inner-base;
+  width: divceil(280, 10, rem);
+  height: divceil(60, 10, rem);
+
+  > .icon-btn {
+    width: divceil(45, 10, rem);
+  }
+
+  @include sp {
+    width: divceil(560, 10, rem);
+    height: divceil(120, 10, rem);
+    gap: 0 divceil(45, 10, rem);
+
+    > .icon-btn {
+      width: 15%;
+      svg {
+        width: divceil(24, 10, rem);
+        height: divceil(24, 10, rem);
+      }
+    }
+  }
+
+  &.opacity {
+    @include pc {
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+.btn-inner-catalog {
+  @extend .btn-inner-base;
+  border-radius: divceil(10, 10, rem);
+  background-color: #40a3c0;
+}
+.btn-inner-catalog-pink {
+  @extend .btn-inner-base;
+  border-radius: divceil(10, 10, rem);
+  background-color: #dd727f;
+}
+
+.btn-inner-red {
+  @extend .btn-inner-base;
+  border: 1px solid #e73743;
+
+  @include pc {
+    &:hover {
+      background-color: #e73743;
+      transition: all 0.4s ease;
+
+      .icon-btn .cls-1 {
+        stroke: #fff;
+      }
+
+      span {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.btn-inner-blue {
+  @extend .btn-inner-base;
+  border: 1px solid #0086cd;
+}
+
+.btn-inner-navy {
+  @extend .btn-inner-base;
+  border: 1px solid #00479d;
+}
+.btn-inner-aqua {
+  @extend .btn-inner-base;
+  border: 1px solid #0085ab;
+}
+.btn-inner-pink {
+  @extend .btn-inner-base;
+  border: 1px solid #dd727f;
+}
+
+.icon-btn-wt {
+  .cls-1 {
+    stroke: #fff;
+  }
+}
+.icon-btn-aqua {
+  .cls-1 {
+    stroke: #0085ab;
+  }
+}
+.icon-btn-pink {
+  .cls-1 {
+    stroke: #dd727f;
+  }
+}
+
+.icon-btn-big {
+  width: divceil(75, 10, rem) !important;
+}

@@ -1,0 +1,120 @@
+@use "../base/global" as *;
+@use "./text" as *;
+@use "../utility/utility" as *;
+
+/* image popup
+====================================================*/
+
+.ml-img-target {
+  cursor: pointer;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.ml.active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.5s;
+  pointer-events: auto;
+}
+
+.ml.active .ml-container {
+  transform: scale(1);
+}
+
+.ml {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.5s, transform 0s 0.5s;
+  overflow: hidden;
+  z-index: 300;
+  pointer-events: none;
+
+  &-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    @include sp {
+      width: divceil(580, 10, rem);
+      margin: 0 auto;
+    }
+  }
+
+  &-container {
+    position: relative;
+    border: 3px solid #0085ab;
+    border-radius: divceil(20, 10, rem);
+    width: divceil(1200, 10, rem);
+    height: divceil(800, 10, rem);
+    max-height: 730px;
+    background-color: #fff;
+    transform: scale(0.3);
+    transition: 0.5s;
+
+    @extend .u-flex-c;
+
+    @include sp {
+      width: 100%;
+      height: divceil(400, 10, rem);
+    }
+  }
+
+  &-img-box {
+    width: 60%;
+  }
+
+  &-cl-wrap {
+    position: absolute;
+    right: divceil(-20, 10, rem);
+    top: divceil(-20, 10, rem);
+  }
+
+  &-cl {
+    display: block;
+    position: relative;
+    width: divceil(40, 10, rem);
+    height: divceil(40, 10, rem);
+    border: divceil(2, 10, rem) solid #0085ab;
+    border-radius: 50%;
+    background: #0085ab;
+    cursor: pointer;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: divceil(3, 10, rem);
+      height: divceil(22, 10, rem);
+      background: #fff;
+      border-radius: divceil(25, 10, rem);
+    }
+
+    &:before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &:after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+}
+
+.ml.big {
+  & .ml-img-box {
+    width: 90%;
+  }
+}

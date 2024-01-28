@@ -1,0 +1,381 @@
+@use "./global" as *;
+
+.scr-target {
+  opacity: 0;
+}
+
+.bgSlide-l,
+.bgSlide-r,
+.bgSlide-r-circle-md,
+.bgSlide-r-1s,
+.bgSlide-r-circle-md-bk,
+.bgSlide-r-circle-lg-bk,
+.bgSlide-l-3s,
+.l-to-r,
+.r-to-l {
+  position: relative;
+  opacity: 1;
+}
+
+.bgSlide-l::before,
+.bgSlide-r-1s::before,
+.bgSlide-l-1s::before,
+.bgSlide-l-2s::before,
+.bgSlide-r::before,
+.bgSlide-r-circle-lg-bk::before {
+  content: "";
+  background: #000;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-fill-mode: forwards;
+  animation-name: bgSlide;
+}
+
+.bgSlide-l-3s::before,
+.l-to-r::before,
+.r-to-l::before {
+  content: "";
+  background: #fff;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-fill-mode: forwards;
+  animation-name: bgSlide;
+}
+
+.bgSlide-r-circle-md::before,
+.bgSlide-r-1s::before {
+  content: "";
+  background: #323232;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  display: block;
+  width: divceil(270, 10, rem);
+  height: divceil(270, 10, rem);
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-fill-mode: forwards;
+  animation-name: bgSlide;
+
+  @include sp {
+    width: divceil(300, 10, rem);
+    height: divceil(300, 10, rem);
+  }
+}
+
+.bgSlide-r-circle-md-bk::before,
+.bgSlide-r-2s::before {
+  content: "";
+  background: #000;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  display: block;
+  width: divceil(270, 10, rem);
+  height: divceil(270, 10, rem);
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-fill-mode: forwards;
+  animation-name: bgSlide;
+}
+
+.bgSlide-r-circle-lg-bk::before {
+  content: "";
+  background: #000;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  display: block;
+  width: divceil(370, 10, rem);
+  height: divceil(370, 10, rem);
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-fill-mode: forwards;
+  animation-name: bgSlide;
+}
+
+.bgSlide-l::before,
+.bgSlide-l-1s::before,
+.bgSlide-l-3s::before,
+.r-to-l::before {
+  left: 0;
+}
+
+.bgSlide-r::before,
+.bgSlide-r-1s,
+.bgSlide-r-circle-md::before,
+.bgSlide-r-circle-md-bk::before,
+.bgSlide-r-circle-lg-bk,
+.l-to-r::before {
+  right: 0;
+}
+
+.bgSlide-l-1s:before {
+  animation-delay: 1s;
+}
+.bgSlide-r-1s:before {
+  animation-delay: 1s;
+}
+
+.bgSlide-l-2s:before {
+  animation-delay: 2s;
+}
+.bgSlide-r-3s:before {
+  animation-delay: 3s;
+}
+.bgSlide-r-4s:before {
+  animation-delay: 4s;
+}
+
+@keyframes bgSlide {
+  100% {
+    width: 0%;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+.fade-in-op {
+  animation-name: fade-in-op;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.fadeInX {
+  animation-name: fadeInX;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+.fadeInXout {
+  animation-name: fadeInXout;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.focusIn {
+  animation: focusIn 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+
+.focusOut {
+  animation: focusOut 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+.tracking-in-expand {
+  animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+
+.scale-back {
+  animation: scale-back 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes fadeInX {
+  0% {
+    transform: translateX(-65%) translateY(-50%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(-50%);
+    opacity: 1;
+  }
+}
+@keyframes fadeInXout {
+  0% {
+    transform: translateX(-50%) translateY(-50%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-40%) translateY(-50%);
+    opacity: 0;
+  }
+}
+@keyframes focusIn {
+  0% {
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes focusOut {
+  0% {
+    filter: blur(0.01);
+  }
+  100% {
+    filter: blur(12px) opacity(0%);
+  }
+}
+
+@keyframes scale {
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-back {
+  0% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+@keyframes fade-in-op {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// scene
+@keyframes drawLine {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+/* sp swipe action
+
+====================================================*/
+
+.all_swipe_item,
+.all_swipe_item-acc {
+  position: relative;
+}
+
+.all_swipe_item.on::before,
+.all_swipe_item-acc.on::before {
+  content: "";
+  display: block;
+  background-image: url("/images/common/all_swipe_icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: divceil(146, 10, rem);
+  height: divceil(100, 10, rem);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  animation: swipeScroll 1.8s infinite;
+  z-index: 5;
+  transition: 0.6s ease;
+  pointer-events: none;
+}
+
+.all_swipe_item.on.none::before,
+.all_swipe_item-acc.on.none::before {
+  opacity: 0;
+  animation: none;
+}
+
+.all_swipe_item > *,
+.all_swipe_item-acc > * {
+  position: relative;
+}
+
+.all_swipe_item.on > *::before,
+.all_swipe_item-acc.on > *::before {
+  content: "";
+  display: block;
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  opacity: 0.78;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.6s ease;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.all_swipe_item.on.none > *::before,
+.all_swipe_item-acc.on.none > *::before {
+  opacity: 0;
+}
+
+@keyframes swipeScroll {
+  0% {
+    transform: translateX(-85%) translateY(-50%);
+  }
+
+  80% {
+    transform: translateX(-15%) translateY(-50%);
+  }
+
+  0%,
+  80%,
+  100% {
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 1;
+  }
+}

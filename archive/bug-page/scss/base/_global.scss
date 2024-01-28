@@ -1,0 +1,110 @@
+@charset "UTF-8";
+@use "sass:math";
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap");
+
+$pcMax: 1500;
+$spMax: 750;
+$br: 750;
+
+@mixin pc {
+  @media screen and (min-width: #{$br+1}px) {
+    @content;
+  }
+}
+
+@mixin pcMax {
+  @media screen and (min-width: #{$pcMax+1}px) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media screen and (max-width: #{$br}px) {
+    @content;
+  }
+}
+
+@function divceil($that, $divid, $unit: "%") {
+  $result: 1;
+
+  @if $unit== "%" {
+    $result: math.div(ceil(math.div($that * 100000, $divid)), 1000);
+    @return percentage(math.div($result, 100));
+  } @else {
+    @if $unit== "em" or $unit== "rem" {
+      $result: math.div(ceil(math.div($that * 1000, $divid)), 1000);
+    } @else {
+      $result: math.div(ceil(math.div($that * 100000, $divid)), 1000);
+    }
+
+    @return $result + unquote($unit);
+  }
+}
+
+.c-bg-darkBk {
+  background-color: #323232;
+}
+
+.c-bg-bk {
+  background-color: #000;
+}
+
+.c-bg-wt {
+  background-color: #fff;
+}
+
+.c-bg-gy {
+  background-color: #565656;
+}
+.c-bg-wtgy {
+  background-color: #787878;
+}
+.c-bg-darkGy {
+  background-color: #3e3a39;
+}
+.c-bg-brwon {
+  background-color: #231815;
+}
+.c-bg-bl {
+  background-color: #0086cd;
+}
+.c-bg-red2 {
+  background-color: #e83743;
+}
+.c-bg-navy {
+  background-color: #00479d;
+}
+
+.c-wt {
+  color: #fff;
+}
+.c-bl {
+  color: #0086cd;
+}
+
+.c-red {
+  color: #e73743;
+}
+.c-aqua {
+  color: #0085ab;
+}
+.c-pink {
+  color: #dd727f;
+}
+
+.u-txt-center {
+  text-align: center;
+}
+
+.fix-none {
+  display: none;
+}
+
+/* fonts */
+
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC&family=Noto+Sans+JP:wght@300&family=Roboto+Condensed:wght@500;700;900&family=Roboto:wght@300&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600&display=swap");

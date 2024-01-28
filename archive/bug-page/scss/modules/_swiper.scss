@@ -1,0 +1,364 @@
+@use "../base/global" as *;
+@use "../utility/utility" as *;
+@use "./text" as *;
+
+.swiper-slide {
+  .slide-container {
+    @extend .u-flex-c;
+    width: 100%;
+    height: divceil(600, 10, rem);
+
+    @include sp {
+      flex-direction: column;
+      height: auto;
+    }
+
+    > img {
+      width: 50%;
+      height: divceil(600, 10, rem);
+
+      @include sp {
+        width: 100%;
+        height: divceil(655, 10, rem);
+      }
+    }
+  }
+
+  .card {
+    width: 50%;
+    height: divceil(600, 10, rem);
+    padding: 0 divceil(98, 10, rem);
+    @extend .c-bg-gy;
+    @extend .u-flex-col-c-start;
+
+    @include pc {
+      width: 70%;
+    }
+
+    @include sp {
+      width: 100%;
+      height: divceil(550, 10, rem);
+      padding: 0 divceil(75, 10, rem) 0 divceil(80, 10, rem);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      letter-spacing: -0.1em;
+      border-top-right-radius: unset;
+      border-bottom-right-radius: divceil(10, 10, rem);
+      border-bottom-left-radius: divceil(10, 10, rem);
+    }
+
+    > .slideNum {
+      font-size: divceil(80, 10, rem);
+      line-height: 0.9em;
+      margin-bottom: divceil(20,10,rem);
+
+      @include sp {
+        font-size: divceil(120, 10, rem);
+      }
+    }
+
+    > h3 {
+      @extend .card-ttl;
+      font-weight: 300;
+      letter-spacing: -0.1em;
+
+      @include sp {
+        font-size: divceil(42, 10, rem);
+        line-height: 1.5;
+        letter-spacing: -0.1em;
+      }
+    }
+
+    > p {
+      @extend .txt-16-card;
+      font-weight: 300;
+
+      @include sp {
+        font-size: divceil(24, 10, rem);
+        line-height: 1.5;
+      }
+    }
+  }
+
+  .slide-container-l {
+    flex-direction: row-reverse;
+
+    @include sp {
+      flex-direction: column;
+    }
+
+    > .img-l {
+      border-top-right-radius: divceil(10, 10, rem);
+      border-bottom-right-radius: divceil(10, 10, rem);
+
+      @include sp {
+        border-bottom-left-radius: unset;
+        border-bottom-right-radius: unset;
+      }
+    }
+
+    > .card {
+      border-top-left-radius: divceil(10, 10, rem);
+      border-bottom-left-radius: divceil(10, 10, rem);
+      border-right:divceil(10,10,rem) solid #000;
+
+      @include sp {
+      border-top-left-radius: unset;
+      border-right: unset;
+      border-bottom-right-radius: divceil(10, 10, rem);
+      border-top: divceil(10, 10, rem) solid #000;
+      }
+    }
+  }
+
+  .slide-container-r {
+
+  >.card {
+      border-top-right-radius: divceil(10, 10, rem);
+      border-bottom-right-radius: divceil(10, 10, rem);
+      border-left:divceil(10,10,rem) solid #000;
+  
+      @include sp {
+        border-top-right-radius:unset;
+        border-top-left-radius: unset;
+        border-left: unset;
+        border-top: divceil(10, 10, rem) solid #000;
+      }
+    }
+  }
+}
+
+.prevBtn1,
+.nextBtn1 {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: -100%;
+  margin: auto;
+  display: grid;
+  place-content: center;
+  width: divceil(85, 10, rem);
+  height: divceil(85, 10, rem);
+  cursor: pointer;
+
+  @include sp {
+    bottom: -10%;
+  }
+}
+
+.prevBtn1 {
+  @include sp {
+    left: -5%;
+  }
+}
+.nextBtn1 {
+  @include sp {
+    right: -5%;
+  }
+}
+
+.prevBtn1::before,
+.nextBtn1::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: "";
+  border: 1px solid #fff;
+  border-radius: 50%;
+  background-color: #fff;
+  opacity: 0.5;
+}
+.prevBtn1.glow::before,
+.nextBtn1.glow::before {
+  animation: glow 2s infinite;
+}
+
+.prevBtn1.glow.swiper-button-disabled::before {
+  animation: none;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 divceil(45, 10, rem) 0 rgba(255, 255, 255, 0.7);
+  }
+
+  50% {
+    box-shadow: 0 0 divceil(25, 10, rem) divceil(45, 10, rem) rgba(255, 255, 255, 0.3);
+  }
+
+  100% {
+    box-shadow: 0 0 divceil(45, 10, rem) 0 rgba(255, 255, 255, 0.7);
+  }
+}
+
+.prevBtn1::after,
+.nextBtn1::after {
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: "";
+  height: divceil(11, 10, rem);
+  width: divceil(45, 10, rem);
+}
+
+.prevBtn1::after {
+  background-image: url("../../../images/common/icon-bk.png");
+}
+
+.nextBtn1::after {
+  background-image: url("../../../images/common/icon-nxt.png");
+}
+
+.swiper-pagination {
+  @include sp {
+    display: none;
+  }
+}
+
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+  margin: 0 divceil(10, 10, rem) 0 divceil(10, 10, rem);
+}
+
+.swiper-pagination-bullet {
+  height: divceil(14, 10, rem);
+  width: divceil(14, 10, rem);
+  background: #777777;
+}
+.swiper-pagination-bullet-active {
+  transform: scale(1.8);
+  background: #0086cd;
+}
+
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+  bottom: divceil(-50, 10, rem);
+}
+
+.swiper-wrapper-2 {
+  @include pc {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: divceil(30, 10, rem) divceil(20, 10, rem);
+  }
+
+  > .swiper-slide {
+    @include pc {
+      flex: 0 0 calc(20% - divceil(20, 10, rem));
+    }
+  }
+
+  .slide-conatiner {
+    gap: divceil(10, 10, rem) 0;
+    @extend .u-flex-col-c-center;
+
+    > a {
+      position: relative;
+      width: divceil(224,10,rem);
+
+      @include sp {
+        width: divceil(420, 10, rem);
+      }
+
+      @include pc {
+        &:hover {
+  
+          &::after {
+            content:'HOW TO \ASOLVE';
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: divceil(41,10,rem);
+            font-weight: 900;
+            letter-spacing: -0.024em;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            white-space: pre;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(231,55,67,0.85);
+            width: divceil(224, 10, rem);
+            height: divceil(224, 10, rem);
+            border-radius: 50%;
+            z-index: 5;
+            transition: all 0.4s ease;
+  
+  
+            @include sp {
+              font-size: divceil(82, 10, rem);
+              width: divceil(420, 10, rem);
+              height: divceil(420, 10, rem);
+            }
+          }
+        } 
+
+      }
+
+    }
+
+    & .bug-tag {
+      position: absolute;
+      width: divceil(100,10,rem);
+      top: divceil(20,10,rem);
+      left: divceil(-10,10,rem);
+      z-index: 10;
+
+      @include sp {
+        width: divceil(206, 10, rem);
+      }
+    }
+  
+    > p {
+      letter-spacing: -0.1em;
+    }
+  }
+}
+
+.prevBtn2,
+.nextBtn2 {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0%;
+  margin: auto;
+  display: grid;
+  place-content: center;
+  width: divceil(85, 10, rem);
+  height: divceil(85, 10, rem);
+  cursor: pointer;
+
+  @include pc {
+    display: none;
+  }
+}
+
+.prevBtn2 {
+  left: divceil(80, 10, rem);
+}
+
+.nextBtn2 {
+  right: divceil(20, 10, rem);
+}
+
+.prevBtn2::after,
+.nextBtn2::after {
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: "";
+  width: divceil(60, 10, rem);
+  height: divceil(50, 10, rem);
+}
+
+.prevBtn2::after {
+  background-image: url("../../../images/common/icon-bk2.png");
+}
+
+.nextBtn2::after {
+  background-image: url("../../../images/common/icon-nxt2.png");
+}

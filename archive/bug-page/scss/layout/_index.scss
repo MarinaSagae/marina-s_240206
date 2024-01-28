@@ -1,0 +1,406 @@
+@use "../base/global" as *;
+@use "../utility/utility" as *;
+
+/*
+各ページ inner レイアウト
+_____________________________________________*/
+section {
+  > .inner {
+    width: divceil(1200, 10, rem);
+    margin: 0 auto;
+
+    @include sp {
+      width: divceil(657, 10, rem);
+      margin: 0 auto;
+    }
+  }
+  > .inner-right {
+    margin: 0 0 0 auto;
+    width: 90%;
+
+    @include sp {
+      width: divceil(657, 10, rem);
+      margin: 0 auto;
+    }
+  }
+  > .inner-c {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  //lineup
+  > .inner.lineup {
+    @include sp {
+      width: divceil(730, 10, rem);
+      margin: 0 auto;
+    }
+  }
+
+  //lineup 実験台
+  > .inner.furniture {
+    @include sp {
+      width: 100%;
+    }
+  }
+}
+
+//top
+
+#luxy {
+  @include sp {
+    // width: 100%;
+    // height: 100%;
+    // overflow-y: scroll;
+    // overflow-x: hidden;
+  }
+}
+.inner.thinkAction {
+  position: relative;
+}
+
+//top 最下レイアウト
+.note {
+  padding: divceil(100, 10, rem) divceil(155, 10, rem);
+
+  @include sp {
+    padding: 0;
+  }
+
+  > .inner {
+    position: relative;
+    overflow: hidden;
+    width: divceil(1200, 10, rem);
+    margin: 0 auto;
+    padding: divceil(100, 10, rem) 0 divceil(60, 10, rem);
+
+    @include sp {
+      width: divceil(720, 10, rem);
+      height: auto;
+      padding: divceil(65, 10, rem) 0 divceil(70, 10, rem);
+    }
+  }
+
+  .inner.draw {
+    opacity: 1;
+  }
+
+  .corner {
+    position: absolute;
+    width: divceil(16, 10, rem);
+    height: divceil(16, 10, rem);
+    background-color: #fff;
+  }
+
+  .corner-top-left {
+    top: divceil(0, 10, rem);
+    left: divceil(-2, 10, rem);
+  }
+
+  .corner-top-right {
+    top: divceil(0, 10, rem);
+    right: divceil(0, 10, rem);
+  }
+
+  .corner-bottom-left {
+    bottom: divceil(0, 10, rem);
+    left: divceil(-2, 10, rem);
+  }
+
+  .corner-bottom-right {
+    bottom: divceil(0, 10, rem);
+    right: divceil(0, 10, rem);
+  }
+
+  .inner.draw::before,
+  .inner.draw::after,
+  .inner.draw .line::before,
+  .inner.draw .line::after {
+    content: "";
+    position: absolute;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+  }
+
+  /* 下の外側の線 */
+  .inner.draw::before {
+    animation-name: drawHorizontalBottomOuter;
+    bottom: 0;
+    right: 0;
+    height: 0px;
+    background-color: #fff;
+    animation-delay: 0s;
+  }
+
+  /* 下の内側の線 */
+  .inner.draw .line::before {
+    animation-name: drawHorizontalBottomInner;
+    bottom: divceil(14, 10, rem);
+    right: 0;
+    height: 0px;
+    background-color: #fff;
+    animation-delay: 0s;
+  }
+
+  @keyframes drawHorizontalBottomInner {
+    0% {
+      width: 0;
+      height: 0px;
+    }
+
+    100% {
+      width: 100%;
+      height: 2px;
+    }
+  }
+
+  @keyframes drawHorizontalBottomOuter {
+    0% {
+      width: 0;
+      height: 0px;
+    }
+
+    100% {
+      width: 100%;
+      height: divceil(2, 10, rem);
+    }
+  }
+
+  /* 上の外側の線 */
+  .inner.draw .line:nth-child(2)::before {
+    animation-name: drawHorizontalTopOuter;
+    top: 0;
+    left: 0;
+    height: 0px;
+    background-color: #fff;
+    animation-delay: 1s;
+  }
+
+  /* 上の内側の線 */
+  .inner.draw .line:nth-child(2)::after {
+    animation-name: drawHorizontalTopInner;
+    top: divceil(14, 10, rem);
+    left: 0;
+    height: 0px;
+    background-color: #fff;
+    animation-delay: 1s;
+  }
+
+  @keyframes drawHorizontalTopOuter {
+    0% {
+      width: 0;
+      height: 0px;
+    }
+
+    100% {
+      width: 100%;
+      height: 2px;
+    }
+  }
+
+  @keyframes drawHorizontalTopInner {
+    0% {
+      width: 0;
+      height: 0px;
+    }
+
+    100% {
+      width: 100%;
+      height: 2px;
+    }
+  }
+
+  /* 左の外側の線 */
+  .inner.draw::after {
+    animation-name: drawVerticalLeftOuter;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: divceil(2, 10, rem);
+    background-color: #fff;
+    animation-delay: 0.5s;
+  }
+
+  /* 左の内側の線 */
+  .inner.draw .line::after {
+    animation-name: drawVerticalLeftInner;
+    top: 0;
+    right: 0;
+    left: divceil(14, 10, rem);
+    width: divceil(2, 10, rem);
+    background-color: #fff;
+    animation-delay: 0.5s;
+  }
+
+  @keyframes drawVerticalLeftOuter {
+    0% {
+      height: 0;
+    }
+
+    100% {
+      height: 100%;
+    }
+  }
+
+  @keyframes drawVerticalLeftInner {
+    0% {
+      height: 0;
+    }
+
+    100% {
+      height: 100%;
+    }
+  }
+
+  /* 右の外側の線 */
+  .inner.draw .line:nth-child(3)::before {
+    animation-name: drawVerticalRightOuter;
+    top: 0;
+    right: 0;
+    width: divceil(2, 10, rem);
+    background-color: #fff;
+    animation-delay: 1.2s;
+  }
+
+  /* 右の内側の線 */
+  .inner.draw .line:nth-child(3)::after {
+    animation-name: drawVerticalRightInner;
+    top: 0;
+    left: auto;
+    right: divceil(14, 10, rem);
+    width: divceil(2, 10, rem);
+    background-color: #fff;
+    animation-delay: 1.2s;
+  }
+}
+
+@keyframes drawVerticalRightOuter {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes drawVerticalRightInner {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes drawLine {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+
+  100% {
+    width: 95%;
+    opacity: 1;
+  }
+}
+
+.draw-line {
+  position: relative;
+  width: 95%;
+  margin: 0 auto;
+  border: 1px solid #fff;
+
+  @include sp {
+    max-width: divceil(620, 10, rem);
+  }
+}
+
+.draw-line.drawLine {
+  animation-name: drawLine;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.draw-line::before {
+  content: "";
+  position: absolute;
+  top: divceil(-5, 10, rem);
+  left: divceil(-5, 10, rem);
+  width: divceil(10, 10, rem);
+  height: divceil(10, 10, rem);
+  background-color: #fff;
+}
+
+.draw-line::after {
+  content: "";
+  position: absolute;
+  top: divceil(-5, 10, rem);
+  right: divceil(-5, 10, rem);
+  width: divceil(10, 10, rem);
+  height: divceil(10, 10, rem);
+  background-color: #fff;
+}
+
+// パンくず
+.breadcrumb {
+  margin: 0 auto;
+  max-width: divceil(1200, 10, rem);
+  width: 100%;
+  display: flex;
+  font-size: divceil(12, 10, rem);
+  font-weight: 300;
+  @include sp {
+    margin: 0 auto;
+    max-width: divceil(670, 10, rem);
+    font-size: divceil(24, 10, rem);
+  }
+  .wrap {
+    flex-wrap: wrap;
+  }
+  > li + li {
+    &::before {
+      content: ">";
+      margin: 0 divceil(5, 10, rem);
+      display: inline-block;
+      @include sp {
+        margin: 0 divceil(10, 10, rem);
+      }
+    }
+  }
+  .bc-line {
+    text-decoration: underline;
+  }
+}
+.indent {
+  @include sp {
+    padding-left: 2.5em;
+    text-indent: -1em;
+    flex-wrap: nowrap;
+  }
+}
+
+// TOPへ
+.top-scroll {
+  position: fixed;
+  bottom: divceil(120, 10, rem);
+  right: divceil(150, 10, rem);
+  z-index: 999;
+  opacity: 0;
+  > a {
+    padding: divceil(10, 10, rem);
+    border-right: 2px solid #3e3a39;
+    border-bottom: 2px solid #3e3a39;
+    font-size: divceil(20, 10, rem);
+    color: #3e3a39;
+    @include sp {
+      padding: divceil(10, 10, rem) divceil(30, 10, rem);
+      border-right: 2px solid #3e3a39;
+      border-bottom: 2px solid #3e3a39;
+      font-size: divceil(40, 10, rem);
+    }
+  }
+  &.is-display {
+    transition-duration: 0.5s;
+    opacity: 1;
+  }
+}

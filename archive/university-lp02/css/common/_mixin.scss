@@ -1,0 +1,72 @@
+@charset "UTF-8";
+@use 'sass:math';
+
+// 可変対応
+@function divceil($that, $divid, $unit: "%") {
+  $result: 1;
+  @if $unit=="%" {
+    $result: math.div(ceil(math.div($that * 100000, $divid)), 1000);
+    @return percentage(math.div($result, 100));
+  } @else {
+    @if $unit=="em" or $unit=="rem" {
+      $result: math.div(ceil(math.div($that * 1000, $divid)), 1000);
+    } @else {
+      $result: math.div(ceil(math.div($that * 100000, $divid)), 1000);
+    }
+    @return $result + unquote($unit);
+  }
+}
+
+// ブレイクポイント
+$br: 750;
+$pcMax: 1281;
+$pc: 1280;
+$sp: 750;
+$pcInn: 800;
+
+@mixin pc {
+  @media screen and (min-width: #{$br+1}px) {
+    @content;
+  }
+}
+@mixin sp {
+  @media screen and (max-width: #{$br}px) {
+    @content;
+  }
+}
+@mixin pcInn {
+  @media screen and (max-height: #{$pcInn}px) {
+    @content;
+  }
+}
+
+// font
+$fnt-ZKGN: 'Zen Kaku Gothic New', sans-serif;
+$fnt-Jost: 'Jost', sans-serif;
+$col01: #1A1A1A;
+$col02: #3E3A39;
+
+@mixin fs($fs) {
+  font-size: divceil($fs, 10, rem);
+}
+
+@mixin fw($w) {
+  @if $w == DemiLight {
+    font-weight: 300;
+  } @else if $w == Regular {
+    font-weight: 400;
+  } @else if $w == Medium {
+    font-weight: 500;
+  } @else if $w == SemiBold {
+    font-weight: 600;
+  } @else if $w == Bold {
+    font-weight: 700;
+  } @else {
+    font-weight: $w;
+  }
+}
+
+//line-height
+@function calcLH ($height, $fs) {
+  @return ($height / $fs)
+};

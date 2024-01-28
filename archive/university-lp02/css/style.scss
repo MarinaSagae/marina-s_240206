@@ -1,0 +1,1938 @@
+@charset "UTF-8";
+@use './common/mixin' as *;
+
+// 共通パーツ
+.txt-center {
+  text-align: center
+}
+.fnt-bold {
+  @include fw(Bold);
+}
+.txt-faculty {
+  font-size: divceil(15, 10, rem);
+  line-height: divceil(21, 10, rem);
+  @include sp { 
+    font-size: divceil(21, 10, rem);
+    line-height: divceil(27, 10, rem);
+  }
+}
+.txt-faculty02 {
+  font-size: divceil(19, 10, rem);
+  line-height: divceil(25, 10, rem);
+  @include sp { 
+    font-size: divceil(30, 10, rem);
+    line-height: divceil(36, 10, rem);
+  }
+}
+
+// 就職先名前　アニメーション
+.slide-area {
+  overflow: hidden;
+  position: relative;
+}
+.slide-txt {
+  padding: divceil(10, 10, rem);
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 0;
+  @include sp { 
+    padding: divceil(15, 10, rem);
+    display: block;
+  }
+  &.is-slide-txt {
+    animation-name: kf-txt;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+}
+@keyframes kf-txt {
+  0% {
+    opacity: 0;
+    width: 0%;
+  }
+  100% {
+    opacity: 1;
+    width: 100%;
+  }
+}
+.slide-bg {
+  height: 100%;
+  display: block;
+  background-color: #fff;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  &.is-slide-bg {
+    animation-name: kf-bg;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+}
+@keyframes kf-bg {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+.slide-bg-ttl {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  background-color: #fff;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  &.is-slide-bg-ttl {
+    animation-name: kf-bg-ttl;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+}
+@keyframes kf-bg-ttl {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+// ヘッダー
+.head {
+  padding: divceil(60, 10, rem) divceil(60, 10, rem) 0 divceil(60, 10, rem);
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  @include sp {
+    padding: divceil(15, 10, rem) divceil(20, 10, rem) 0 divceil(55, 10, rem);
+  }
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+    @include sp {
+      align-items: center;
+    }
+  }
+  .logo {
+    width: divceil(140, 10, rem);
+    height: auto;
+    @include sp {
+      width: divceil(224, 10, rem);
+    }
+    &.logo-huwa {
+      animation-name: kf-logo-huwa;
+      animation-duration: 4s;
+      animation-fill-mode: forwards;
+      opacity: 0;
+    }
+    @keyframes kf-logo-huwa {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    
+  }
+  .humBox {
+    margin-left: auto;
+    width: divceil(110, 10, rem);
+    display: flex;
+    align-items: center;
+    @include sp {
+      width: divceil(170, 10, rem);
+    }
+  }
+  .close {
+    display: block;
+    font-family: $fnt-Jost;
+    font-size: divceil(12, 10, rem);
+    letter-spacing: divceil(2, 10, rem);
+    transition: 1s all;
+    opacity: 0;
+    @include sp {
+      font-size: divceil(20, 10, rem);
+    }
+    &.is-slide {
+      opacity: 1;
+      transform:translateX(-15px);
+    }
+  }
+  .hum {
+    width: divceil(60, 10, rem);
+    height: divceil(60, 10, rem);
+    background-color: #fff;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    @include sp {
+      width: divceil(100, 10, rem);
+      height: divceil(100, 10, rem);
+    }
+    >span {
+      width: divceil(20, 10, rem);
+      height: 1px;
+      border: 1px solid #000;
+      display: block;
+      transition: .6s;
+      position: absolute;
+      left: divceil(20, 10, rem);
+      @include sp {
+        width: divceil(33, 10, rem);
+        left: divceil(33, 10, rem);
+      }
+      &:first-of-type {
+        top: divceil(24, 10, rem);
+        @include sp {
+          top: divceil(40, 10, rem);
+        }
+      }
+      &:nth-of-type(2) {
+        top: divceil(29, 10, rem);
+        @include sp {
+          top: divceil(48, 10, rem);
+        }
+      }
+      &:last-of-type {
+        top: divceil(34, 10, rem);
+        @include sp {
+          top: divceil(56, 10, rem);
+        }
+      }
+    }
+    &.is-active {
+      >span {
+        top: divceil(28, 10, rem);
+        @include sp {
+          top: divceil(46, 10, rem);
+        }
+        &:first-of-type {
+          transform: rotate(40deg);
+        }
+        &:nth-of-type(2) {
+          opacity: 0;
+        }
+        &:last-of-type {
+          transform: rotate(-40deg);
+        }
+      }
+    }
+  }
+}
+.hum-menu {
+  position: fixed;
+  bottom: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #E1E1E1;
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+  transition: bottom 0.3s ease;
+  .hum-menuBody {
+    height: 100%;
+    display: flex;
+    overflow-y: scroll;
+  }
+  .hum-bg {
+    width: divceil(381, $pc, vw);
+    height: 100%;
+    position: relative;
+    @include sp {
+      width: divceil(110, 10, rem);
+      height: divceil(1334, 10, rem);
+    }
+    >img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .hum-menuflexInner {
+    padding-bottom: divceil(100, 10, rem);
+    overflow-y: auto;
+  }
+  .hum-menuflex {
+    padding: divceil(250, 10, rem) 0 0 divceil(60, 10, rem);
+    display: flex;
+    column-gap: divceil(85, 10, rem);
+  }
+  .hum-menuList {
+    >ul {
+      font-size: divceil(13, 10, rem);
+      &:not(:first-of-type) {
+        margin-top: divceil(30, 10, rem);
+      }
+      >p {
+        margin-bottom: divceil(35, 10, rem);
+        @include fw(Medium);
+      }
+      >li+li {
+        &:not(:first-of-type) {
+          margin-top: divceil(20, 10, rem);
+        }
+      }
+      >li {
+        color: #666666;
+      }
+    }
+  }
+  .hum-spMenu {
+    padding-left: divceil(90, 10, rem);
+    >ul {
+      margin-top: divceil(40, 10, rem);
+      >li+li {
+        margin-top: divceil(40, 10, rem);
+      }
+      >li {
+        font-size: divceil(20, 10, rem);
+        >p+a {
+          margin-left: divceil(15, 10, rem);
+        }
+        >a+a {
+          margin-left: divceil(15, 10, rem);
+        }
+        >p {
+          display: inline;
+          @include fw(Medium);
+        }
+        >a {
+          color: #666666;
+        }
+      }
+    }
+  }
+  .home {
+    margin: divceil(-65, 10, rem) 0 divceil(50, 10, rem);
+    display: block;
+    font-family: $fnt-Jost;
+    font-size: divceil(12, 10, rem);
+    @include sp {
+      margin: divceil(215, 10, rem) 0 0 0;
+      font-size: divceil(20, 10, rem);
+    }
+  }
+  .list {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1s;
+    &.is-list {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .linkBox {
+    margin-top: divceil(100, 10, rem);
+    font-size: divceil(12, 10, rem);
+    @include fw(Medium);
+    @include sp {
+      font-size: divceil(20, 10, rem);
+    }
+    >a+a {
+      margin-top: divceil(15, 10, rem);
+      @include sp {
+        margin-top: divceil(40, 10, rem);
+      }
+      
+    }
+    >a {
+      display: block;
+    }
+  }
+  .btn {
+    margin-top: divceil(55, 10, rem);
+    padding: divceil(25, 10, rem) divceil(50, 10, rem);
+    display: inline-block;
+    background: #E1E1E1;
+    font-size: divceil(12, 10, rem);
+    @include fw(Medium);
+    color: #000;
+    position: relative;
+    @include sp {
+      margin-top: divceil(30, 10, rem);
+      padding: divceil(35, 10, rem) divceil(120, 10, rem);
+      font-size: divceil(16, 10, rem);
+    }
+    &:hover {
+      display: inline-block;
+      color: #fff;
+      transition: all .3s;
+      transition-delay: .7s;
+      animation-name: kf-btn-bg;
+      animation-delay: .7s;
+      animation-fill-mode: forwards;
+  
+      &::before,&::after {
+        width: 100%;
+        transition: all 0.2s linear;
+      }
+      &::after {
+        opacity: 1;
+      }
+      span {
+        &::before,&::after {
+          height: 100%;
+          transition: all 0.2s linear;
+        }
+      }
+      &.btn-circle {
+        &::before {
+          right: 0;
+          top: 0;
+          transition-delay: 0.4s;
+        }
+        &::after {
+          left: 0;
+          bottom: 0;
+        }
+        & span {
+          &::before {
+            left: 0;
+            top: 0;
+            transition-delay: 0.6s;
+          }
+          &::after {
+            right: 0;
+            bottom: 0;
+            transition-delay: 0.2s;
+          }
+        }
+      }
+    }
+    >span{
+      display: inline-block;
+      &::before,&::after {
+        content: "";
+        width: 1px;
+        height: 0;
+        background-color: #B2B2B2;
+        position: absolute;
+      }
+    }
+    &::before,&::after { 
+      content: "";
+      width: 0;
+      height: 1px;
+      background-color: #B2B2B2;
+      position: absolute;
+    }
+  }
+  @keyframes kf-btn-bg {
+    0% {
+      background: #E1E1E1;
+    }
+    100% {
+      background: linear-gradient(90deg, rgba(71,59,123,1) 0%, rgba(53,131,166,1) 50%, rgba(48,209,189,1) 100%);
+    }
+  }
+}
+
+// KV
+.kv {
+  width:100%;
+  height: 100dvh;
+  overflow: hidden;
+  position: relative;
+  &__wrap {
+    width:100%;
+    height: 100dvh;
+    position:fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    @include sp {
+      flex-direction: column-reverse;
+      row-gap: divceil(80, 10, rem);
+    }
+  }
+  &__ttlBox {
+    position: relative;
+    @include pc {  
+      padding-top: divceil(170, 10, rem);
+      padding-left: divceil(140, $pc, vw);
+      height: 100%;
+      @include pcInn {  
+        padding-top: divceil(150, 10, rem);
+      }
+    }
+    @include sp {  
+      margin: 0 auto divceil(70, 10, rem);
+      text-align: center;
+    }
+
+  }
+  &__ttl-imgWrap {
+    opacity: 0;
+  }
+  &__ttl-img {
+    width: divceil(45, $pc, vw);
+    @include sp {  
+      width: divceil(110, 10, rem);
+      position: absolute;
+      bottom: divceil(-460, 10, rem);
+      right: divceil(90, 10, rem);
+    }
+  }
+  &__ttl {
+    margin-top: divceil(25, 10, rem);
+    width: divceil(219, $pc, vw);
+    opacity: 0;
+    @include pc { 
+      @include pcInn {  
+        margin-top: divceil(15, 10, rem);
+      }
+    }
+    @include sp {  
+      width: divceil(670, 10, rem);
+    }
+  }
+  &__txt {
+    font-family: $fnt-Jost;
+    font-size: divceil(12, $pc, vw);
+    line-height: divceil(25, $pc, vw);
+    opacity: 0;
+    @include pc { 
+      margin-top: divceil(35, 10, rem);
+      @include pcInn {  
+        margin-top: divceil(18, 10, rem);
+      }
+    }
+    @include sp {  
+      margin-top: divceil(80, 10, rem);
+      font-family: $fnt-Jost;
+      font-size: divceil(22, 10, rem);
+      line-height: divceil(49, 10, rem);
+    }
+  }
+  &__videoBox {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    @include pc { 
+      margin-bottom: divceil(40, 10, rem);
+    }
+  }
+  &__video {
+    width: divceil(640, $pc, vw);
+    @include pc {
+      margin-top: 4rem;
+      height: calc(100% - 4rem);
+    }
+    @include sp {  
+      margin-left: auto;
+      width: divceil(710, $sp, vw);
+      height: divceil(852, $sp, vw);;
+    }
+    >video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    &.inview {
+      transform: translate(0);
+      transition: transform 1.5s cubic-bezier(.19,1,.22,1), opacity .5s cubic-bezier(.39,.575,.565,1);
+      animation: kf-inview;
+      animation-duration: 1.5s;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+      opacity: 1;
+    }
+}
+@keyframes kf-inview {
+  0% {
+    animation-timing-function: cubic-bezier(0,0,.25,1);
+    clip-path: inset(100% 0 0 0 round 0 15% 0 0);
+  }
+  30% {
+    animation-timing-function: cubic-bezier(0,0,1,1);
+    clip-path: inset(0 0 0 0 round 0 15% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0 round 0 0 0 0);
+  }
+}
+}
+// 110%からズームアウトしながらフェードイン
+.zoom {
+  animation-name: kf-zoom;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+@keyframes kf-zoom {
+  0% { 
+    opacity: 0;
+    transform: scale(1.1)
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// KVに内容が重なるように
+.bg-posi {
+  background-color: #E1E1E1;
+  position: relative;
+  z-index:1;
+}
+
+// スクロール促す
+.scroll_nav {
+  position: fixed;
+  bottom: -19.5rem;
+  right: 4rem;
+  z-index: 2;
+  writing-mode: vertical-rl;
+  width: 1em;
+  height: 33rem;
+  @include sp {
+    bottom: -9rem;
+    right: 2.5rem;
+  }
+  .scroll {
+    position: relative;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    font-size: 1.2rem;
+    font-family: $fnt-Jost;
+    color: #000;
+    @include sp {
+      font-size: 2.4rem;
+    }
+    span {
+      width: 0.8em;
+      height: 6vh;
+      position: absolute;
+      top: 6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: block;
+      @include sp {
+        top: 10.5rem;
+        width: 1rem;
+        height: 16rem;
+      }
+      @include pcInn {
+        height: 10vh;
+      }
+      &::before {
+        content: "";
+        background: #000;
+        width: 0.1rem;
+        height: 100%;
+        position: absolute;
+        left: 0.5rem;
+        top: 0;
+        display: block;
+      }
+      &::after {
+        content: "";
+        background: #000;
+        width: 1rem;
+        height: 1rem;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+        border-radius: 50%;
+        animation: scrollCircleAnime 3000ms cubic-bezier(0.77, 0, 0.175, 1) 0ms infinite;
+      }
+    }
+  }
+  &.is-scroll-non {
+    transition-duration: .5s;
+    opacity: 0;
+  }
+}
+@keyframes scrollCircleAnime {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  5% {
+    top: 0;
+    opacity: 1;
+  }
+  95% {
+    top: 100%;
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+// 内定者速報 リード文
+.lead {
+  padding: divceil(120, 10, rem) 0;
+  min-width: divceil(1280, 10, rem);
+  background:
+    linear-gradient(
+      to right,
+      rgba(70, 63, 126, .5),
+      rgba(53, 131, 166, .5) 50%,
+      rgba(48, 209, 189, .5) 100%,
+    ),
+    url(../img/bg01-pc.jpg) no-repeat center / cover;
+    text-align: center;
+    color: #fff;
+    mix-blend-mode: multiply;
+    @include sp {  
+      padding: divceil(145, 10, rem) 0;
+      min-width: 100%;
+      background:
+        linear-gradient(
+          to right,
+          rgba(70, 63, 126, .5),
+          rgba(53, 131, 166, .5) 50%,
+          rgba(48, 209, 189, .5) 100%,
+        ),
+        url(../img/bg01-sp.jpg) no-repeat center / cover;;
+    }
+    &__ttl {
+      font-size: divceil(32, 10, rem);
+      @include fw(Bold);
+      line-height: divceil(52, 10, rem);
+      opacity: 0;
+      @include sp {  
+        font-size: divceil(48, 10, rem);
+        line-height: divceil(84, 10, rem);
+      }
+    }
+    &__txt {
+      margin-top: divceil(115, 10, rem);
+      font-size: divceil(25, 10, rem);
+      line-height: divceil(60, 10, rem);
+      opacity: 0;
+      @include fw(Medium);
+      @include sp {  
+        margin-top: divceil(80, 10, rem);
+        font-size: divceil(33, 10, rem);
+        line-height: divceil(62, 10, rem);
+      }
+    }
+}
+
+// 業種別内定者
+.byCompany {
+  padding: divceil(185, 10, rem) 0 0;
+  @include sp {  
+    padding: divceil(75, 10, rem) 0  divceil(145, 10, rem);
+  }
+  &__wrap {
+    section+section {
+      padding-top: divceil(265, 10, rem);
+      @include sp {  
+        padding-top: divceil(145, 10, rem);
+      }
+    }
+    &.mt01 {
+      margin-top: divceil(265, 10, rem);
+      @include sp {  
+        margin-top: divceil(140, 10, rem);
+      }
+    }
+  }
+  &__ttl {
+    margin: 0 auto;
+    max-width: divceil(1000, 10, rem);
+    position: relative;
+    @include sp {  
+      max-width: 100%;
+    }
+    >p {
+      text-align: center;
+      font-size: divceil(20, 10, rem);
+      @include fw(Medium);
+      @include sp {  
+        font-size: divceil(30, 10, rem);
+      }
+    }
+  }
+  &__comImg {
+    margin: divceil(90, 10, rem) auto divceil(80, 10, rem);
+    height: auto;
+    @include sp {  
+      margin: divceil(100, 10, rem) auto divceil(115, 10, rem);
+    }
+    &::before,&::after {
+      content: "";
+      width: divceil(300, 10, rem);
+      height: 1px;
+      border: 1px solid $col01;
+      position: absolute;
+      top: divceil(190, 10, rem);
+      @include sp {  
+        width: divceil(80, 10, rem);
+        top: divceil(255, 10, rem);
+      }
+    }
+    &::before {
+      left: 0;
+    }
+    &::after {
+      right: 0;
+    }
+    &.wid01 {
+      width: divceil(155, 10, rem);
+      @include sp {  
+        width: divceil(233, 10, rem);
+      }
+    }
+    &.wid02 {
+      width: divceil(189, 10, rem);
+      @include sp {  
+        width: divceil(284, 10, rem);
+      }
+    }
+    &.wid03 {
+      width: divceil(270, 10, rem);
+      @include sp {  
+        width: divceil(405, 10, rem);
+      }
+    }
+    &.wid04 {
+      width: divceil(300, 10, rem);
+      @include sp {  
+        width: divceil(451, 10, rem);
+      }
+    }
+    &.wid05 {
+      width: divceil(109, 10, rem);
+      @include sp {  
+        width: divceil(164, 10, rem);
+      }
+    }
+    &.wid06 {
+      width: divceil(342, 10, rem);
+      @include sp {  
+        width: divceil(514, 10, rem);
+      }
+    }
+    &.wid07 {
+      width: divceil(241, 10, rem);
+    }
+    &.wid08 {
+      width: divceil(265, 10, rem);
+      @include sp {  
+        width: divceil(398, 10, rem);
+      }
+    }
+    &.wid09 {
+      width: divceil(106, 10, rem);
+      @include sp {  
+        width: divceil(159, 10, rem);
+      }
+    }
+  }
+  &__inner {
+    margin: 0 auto;
+    max-width: divceil(1000, 10, rem);
+    position: relative;
+    @include sp {  
+      max-width: divceil(670, 10, rem);
+    }
+  }
+  &__trophyImg {
+    width: divceil(217, 10, rem);
+    height: divceil(376, 10, rem);
+    position: absolute;
+    top: divceil(23, 10, rem);
+    right: divceil(10, 10, rem);
+    opacity: 0;
+    @include sp {  
+      width: divceil(346, 10, rem);
+      height: divceil(594, 10, rem);
+      top: divceil(743, 10, rem);
+      right: divceil(30, 10, rem);
+      z-index: 1;
+    }
+    &.re-img {
+      @include pc { 
+        left: divceil(-25, 10, rem);
+      }
+    }
+  }
+  &__flex01 {
+    display: flex;
+    column-gap: divceil(40, 10, rem);
+    @include sp {  
+      flex-direction: column;
+    }
+    &.re {
+      flex-direction: row-reverse;
+      column-gap: divceil(50, 10, rem);
+      @include sp {  
+        flex-direction: column;
+      }
+    }
+    &.gap-10 {
+      @include pc { 
+        column-gap: divceil(10, 10, rem);
+      }
+    }
+  }
+  &__imgWrap {
+    display: inline-block;
+    overflow: hidden;
+  }
+  &__img {
+    width: divceil(600, 10, rem);
+    height: auto;
+    opacity: 0;
+    @include sp {  
+      width: 100%;
+    }
+    &.inview {
+      transform: translate(0);
+      transition: transform 1.5s cubic-bezier(.19,1,.22,1), opacity .5s cubic-bezier(.39,.575,.565,1);
+      animation: kf-inview;
+      animation-duration: 1.5s;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+      opacity: 1;
+    }
+  }
+  &__profile {
+    margin-top: divceil(115, 10, rem);
+    opacity: 0;
+    @include sp {  
+      margin: divceil(80, 10, rem) 0 0 divceil(40, 10, rem);
+    }
+    >li {
+      &:first-of-type {
+        font-family: $fnt-Jost;
+        font-size: divceil(14, 10, rem);
+        @include fw(Medium);
+        @include sp {  
+          font-size: divceil(20, 10, rem);
+        }
+      }
+      &:nth-of-type(2) {
+        margin-top: divceil(15, 10, rem);
+        font-family: $fnt-Jost;
+        font-size: divceil(60, 10, rem);
+        @include fw(Bold);
+        @include sp {  
+          margin-top: divceil(30, 10, rem);
+          font-size: divceil(90, 10, rem);
+        }
+      }
+      &:nth-of-type(3) {
+        margin-top: divceil(50, 10, rem);
+        font-size: divceil(20, 10, rem);
+        @include fw(Medium);
+        @include sp {  
+          margin-top: divceil(85, 10, rem);
+          font-size: divceil(30, 10, rem);
+        }
+        >span {
+          font-size: divceil(21, 10, rem);
+        }
+      }
+      &:nth-of-type(4) {
+        margin-top: divceil(40, 10, rem);
+        font-size: divceil(12, 10, rem);
+        line-height: divceil(20, 10, rem);
+        @include sp {  
+          margin-top: divceil(60, 10, rem);
+          font-size: divceil(18, 10, rem);
+          line-height: divceil(30, 10, rem);
+        }
+      }
+    }
+  }
+  .offerName {
+    @include fw(Medium);
+    position: absolute;
+    bottom: divceil(-20, 10, rem);
+    left: divceil(400, 10, rem);
+    @include sp {  
+      margin: divceil(85, 10, rem) auto 0;
+      width: divceil(590, 10, rem);
+      position: initial;
+    }
+    >h3+p {
+      margin-top: divceil(36, 10, rem);
+      @include sp {  
+        margin-top: divceil(80, 10, rem);
+      }
+    }
+    >p+p {
+      margin-top: divceil(10, 10, rem);
+      @include sp {  
+        margin-top: divceil(15, 10, rem);
+      }
+    }
+    &.re-posi {
+      left: 0;
+      @include sp {  
+        position: initial;
+      }
+    }
+  }
+  .offerName-ttlWrap {
+    width: fit-content;
+    @include sp { 
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+  .offerName-ttl {
+    background: linear-gradient(90deg, rgba(165,191,253,1) 0%, rgba(245,128,131,1) 100%);
+    -webkit-background-clip: text;
+    font-size: divceil(36, 10, rem);
+    color: transparent;
+    @include sp {  
+      display: block;
+      text-align: center;
+      font-size: divceil(46, 10, rem);
+      line-height: divceil(60, 10, rem);
+    }
+  }
+  .offerName-txtWrap {
+    width: fit-content;
+  }
+  .offerName-txt {
+    font-size: divceil(16, 10, rem);
+    @include sp {  
+      font-size: divceil(24, 10, rem);
+    }
+  }
+  .offerName-ttl-mid {
+    @include sp {  
+      font-size: divceil(34, 10, rem);
+    }
+  }
+
+  // 公務員に内定
+  &__civilServant {
+    margin-top: divceil(190, 10, rem);
+    @include sp {  
+      margin-top: divceil(140, 10, rem);
+    }
+  }
+  &__civilBox {
+    padding: divceil(120, 10, rem) divceil(125, 10, rem);
+    min-width: divceil(1280, 10, rem);
+    min-height: divceil(834, 10, rem);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    @include sp {  
+      padding: 0;
+      min-width: divceil(750, 10, rem);
+      min-height: divceil(1250, 10, rem);
+    }
+    &.c-bg01 {
+      background-image: url(../img/bg02-pc.jpg);
+      @include sp {  
+        background-image: url(../img/bg02-sp.jpg);
+      }
+    }
+    &.c-bg02 {
+      background-image: url(../img/bg03-pc.jpg);
+      @include sp {  
+        background-image: url(../img/bg03-sp.jpg);
+      }
+    }
+  }
+  .civill {
+    position: absolute;
+    &.ml01 {
+      top: 14%;
+      left: 12%;
+      @include sp {  
+        top: 9%;
+      }
+    }
+    &.ml02 {
+      top: -3%;
+      right: 12%;
+      @include sp {  
+        top: 24%;
+        right: 6%;
+      }
+    }
+  }
+  .civill-txtWrap {
+    width: fit-content;
+  }
+  .civill-txt01 {
+    font-size: divceil(73, 10, rem);
+    @include fw(Medium);
+    @include sp {  
+      font-size: divceil(90, 10, rem);
+    }
+    .stroke {
+      color: #fff;
+      -webkit-text-stroke: 1px $col01;
+    }
+  }
+  .mt02 {
+    margin-top: divceil(80, 10, rem);
+    @include sp {  
+      margin-top: divceil(345, 10, rem);
+    }
+  }
+  .civill-txt02 {
+    font-size: divceil(20, 10, rem);
+    @include sp {  
+      font-size: divceil(24, 10, rem);
+    }
+  }
+  .mt03 {
+    margin-top: divceil(20, 10, rem);
+    @include sp {  
+      margin-top: divceil(25, 10, rem);
+    }
+  }
+  .civill-txt03 {
+    background: linear-gradient(90deg, rgba(165,191,253,1) 0%, rgba(245,128,131,1) 100%);
+    -webkit-background-clip: text;
+    font-size: divceil(50, 10, rem);
+    @include fw(Medium);
+    color: transparent;
+    @include sp {  
+      font-size: divceil(63, 10, rem);
+    }
+  }
+  .mt04 {
+    margin-top: divceil(110, 10, rem);
+    @include sp {  
+      margin-top: divceil(55, 10, rem);
+    }
+  }
+  .civill-txt04 {
+    font-size: divceil(20, 10, rem);
+    @include fw(Medium);
+    @include sp {  
+      font-size: divceil(30, 10, rem);
+    }
+    >span {
+      font-size: divceil(12, 10, rem);
+      @include sp {  
+        font-size: divceil(18, 10, rem);
+      }
+    }
+  }
+  .mt05 {
+    margin-top: divceil(15, 10, rem);
+    @include sp {  
+      margin-top: divceil(20, 10, rem);
+    }
+  }
+  .civill-txt05 {
+    font-size: divceil(16, 10, rem);
+    @include fw(Medium);
+    @include sp {  
+      font-size: divceil(24, 10, rem);
+    }
+  }
+  .mt06 {
+    margin-top: divceil(290, 10, rem);
+  }
+
+  // 業種別内定先企業一覧
+  &__tablewrap {
+    padding: divceil(190, 10, rem) 0 divceil(120, 10, rem);
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255,225,255,1) 0%, rgba(255,240,240,1) 50%, rgba(171,223,248,1) 100%);
+    background-size: 200% 200%;
+    animation-name: kf-table-bg;
+    animation-duration: 20s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    @include sp {  
+      padding: divceil(140, 10, rem) 0 divceil(145, 10, rem);
+    }
+  }
+  @keyframes kf-table-bg {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  &__table-ttl {
+    text-align: center;
+    font-size: divceil(30, 10, rem);
+    @include fw(Medium);
+    position: relative;
+    @include sp {  
+      font-size: divceil(45, 10, rem);
+      line-height: divceil(66, 10, rem);
+    }
+    >span {
+      font-size: divceil(16, 10, rem);
+      @include sp {  
+        font-size: divceil(24, 10, rem);
+      }
+    }
+    &::after {
+      content: "";
+      width: divceil(360, 10, rem);
+      height: 1px;
+      border: 1px solid $col01;
+      position: absolute;
+      bottom: divceil(-30, 10, rem);
+      left: 50%;
+      transform: translate(-50%);
+      @include sp {  
+        width: divceil(448, 10, rem);
+        bottom: divceil(-30, 10, rem);
+      }
+    }
+  }
+  &__table-txt {
+    margin-top: divceil(55, 10, rem);
+    text-align: center;
+    font-size: divceil(17, 10, rem);
+    @include fw(Medium);
+    @include sp {  
+      margin-top: divceil(75, 10, rem);
+      font-size: divceil(25, 10, rem);
+    }
+  }
+  &__tableBox {
+    margin: divceil(115, 10, rem) auto 0;
+    max-width: divceil(1000, 10, rem);
+    background-color: #fff;
+    @include sp {  
+      margin: divceil(85, 10, rem) auto 0;
+      max-width: divceil(670, 10, rem);
+      border: 1px solid $col01;
+    }
+  }
+  &__tableFlex02 {
+    height: divceil(140, 10, rem);
+    display: grid;
+    grid-template-columns: divceil(224, 10, rem) divceil(776, 10, rem);
+    align-items: center;
+    border-top: 1px solid $col01;
+    position: relative;
+    @include sp {  
+      height: divceil(525, 10, rem);
+      grid-template-columns: 1fr;
+      grid-template-rows: divceil(240, 10, rem) auto;
+      border-top: none;
+    }
+    &:not(:first-of-type) {
+      @include sp { 
+        border-top: 1px solid $col01;
+      }
+    }
+    &:last-of-type {
+      @include pc { 
+        border-bottom: 1px solid $col01;
+      }
+    }
+    &::before {
+      content: "";
+      width: 1px;
+      height: divceil(140, 10, rem);
+      border: 1px dotted $col02;
+      position: absolute;
+      top: 0;
+      left: divceil(223, 10, rem);
+      @include sp {  
+        width: divceil(590, 10, rem);
+        height: 1px;
+        top: divceil(230, 10, rem);
+        left: divceil(40, 10, rem);
+      }
+    }
+    >p {
+      padding: 0 divceil(30, 10, rem);
+      font-size: divceil(14, 10, rem);
+      line-height: divceil(27, 10, rem);
+      @include sp { 
+        font-size: divceil(20, 10, rem);
+        line-height: divceil(41, 10, rem);
+      }
+    }
+    .t-wid {
+      margin: 0 auto;
+      height: auto;
+    }
+    .t-wid01 {
+      width: divceil(85, 10, rem);
+      @include sp { 
+        width: divceil(127, 10, rem);
+      }
+    }
+    .t-wid02 {
+      width: divceil(106, 10, rem);
+      @include sp { 
+        width: divceil(158, 10, rem);
+      }
+    }
+    .t-wid03 {
+      width: divceil(120, 10, rem);
+      @include sp { 
+        width: divceil(215, 10, rem);
+      }
+    }
+    .t-wid04 {
+      width: divceil(168, 10, rem);
+      @include sp { 
+        width: divceil(251, 10, rem);
+      }
+    }
+    .t-wid05 {
+      width: divceil(49, 10, rem);
+      @include sp { 
+        width: divceil(87, 10, rem);
+      }
+    }
+    .t-wid06 {
+      width: divceil(190, 10, rem);
+      @include sp { 
+        width: divceil(286, 10, rem);
+      }
+    }
+    .t-wid07 {
+      width: divceil(134, 10, rem);
+      @include sp { 
+        width: divceil(201, 10, rem);
+      }
+    }
+    .t-wid08 {
+      width: divceil(118, 10, rem);
+      @include sp { 
+        width: divceil(200, 10, rem);
+      }
+    }
+    .t-wid09 {
+      width: divceil(57, 10, rem);
+      @include sp { 
+        width: divceil(86, 10, rem);
+      }
+
+    }
+    .t-wid10 {
+      width: divceil(70, 10, rem);
+      @include sp { 
+        width: divceil(110, 10, rem);
+      }
+    }
+  }
+}
+
+// エリアで見る内定者
+.areaOffer {
+  padding: divceil(175, 10, rem) 0 divceil(235, 10, rem);
+  @include sp { 
+    padding: divceil(75, 10, rem) 0 divceil(145, 10, rem);
+  }
+  >h2 {
+    margin: 0 auto;
+    width: divceil(500, 10, rem);
+    height: auto;
+    @include sp { 
+      width: divceil(668, 10, rem);
+    }
+  }
+  >p {
+    margin: divceil(120, 10, rem) 0 0;
+    text-align: center;
+    font-size: divceil(16, 10, rem);
+    line-height: divceil(33, 10, rem);
+    @include sp { 
+      margin-top: divceil(80, 10, rem);
+      font-size: divceil(24, 10, rem);
+      line-height: divceil(50, 10, rem);
+    }
+  }
+  &__mapInner {
+    margin: divceil(40, 10, rem) auto divceil(85, 10, rem);
+    max-width: divceil(1280, 10, rem);
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    @include sp { 
+      margin: divceil(65, 10, rem) auto divceil(60, 10, rem);
+      max-width: divceil(750, 10, rem);
+    }
+  }
+  &__map {
+    opacity: 0;
+  }
+  >ul+ul {
+    @include pc { 
+      margin-top: divceil(160, 10, rem);
+    }
+    @include sp { 
+      margin-top: divceil(155, 10, rem);
+    }
+  }
+  &__people {
+    margin: 0 auto;
+    max-width: divceil(1100, 10, rem);
+    display: flex;
+    @include sp { 
+      max-width: divceil(590, 10, rem);
+      flex-direction: column;
+    }
+    >li+li {
+      @include sp { 
+        margin-top: divceil(135, 10, rem);
+      }
+    }
+  }
+  &__peopleBox {
+    @include pc { 
+      width: divceil(550, 10, rem);
+    }
+  }
+  &__p-img {
+    margin: 0 auto;
+    width: divceil(167, 10, rem);
+    height: auto;
+    position: relative;
+    @include sp { 
+      width: divceil(255, 10, rem);
+    }
+    &::before {
+      content: "";
+      width: divceil(350, 10, rem);
+      height: divceil(300, 10, rem);
+      background: linear-gradient(90deg, rgba(33,211,252,1) 0%, rgba(182,33,255,1) 100%);
+      background-size: 130% 180%;
+      opacity: .5;
+      animation-name: kf-fluid;
+      animation-duration: 15s;
+      animation-timing-function: ease;
+      animation-iteration-count: infinite;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      z-index: -1;
+      @include sp { 
+        width: divceil(525, 10, rem);
+        height: divceil(405, 10, rem);
+      }
+    }
+  }
+  @keyframes kf-fluid {  
+    0% {
+      border-radius: 63% 37% 54% 46%/55% 48% 52% 45%;
+      background-position: 0% 50%;
+    }
+    14% {
+      border-radius: 40% 60% 54% 46%/49% 60% 40% 51%;
+      background-position: 20% 75%;
+    }
+    28% {
+      border-radius: 54% 46% 38% 62%/49% 70% 30% 51%;
+      background-position: 40% 85%;
+    }
+    42% {
+      border-radius: 61% 39% 55% 45%/61% 38% 62% 39%;
+      background-position: 50% 95%;
+    }
+    56% {
+      border-radius: 61% 39% 67% 33%/70% 50% 50% 30%;
+      background-position: 100% 50%;
+    }
+    70% {
+      border-radius: 50% 50% 34% 66%/56% 68% 32% 44%;
+      background-position: 100% 50%;
+    }
+    84% {
+      border-radius: 46% 54% 50% 50%/35% 61% 39% 65%;
+      background-position: 100% 50%;
+    }
+    100% {
+      border-radius: 63% 37% 54% 46%/55% 48% 52% 45%;
+      background-position: 0% 50%;
+    }
+  }
+  &__intro {
+    margin-top: divceil(68, 10, rem);
+    padding-left: divceil(50, 10, rem);
+    width: 100%;
+    position: relative;
+    @include sp { 
+      margin-top: divceil(155, 10, rem);
+      padding-left: 0;
+    }
+    >img {
+      width: divceil(102, 10, rem);
+      height: divceil(104, 10, rem);
+      background-image: url(../img/img05.png);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: absolute;
+      top: divceil(-70, 10, rem);
+      left: divceil(120, 10, rem);
+      opacity: 0;
+      @include sp { 
+        width: divceil(183, 10, rem);
+        height: divceil(186, 10, rem);
+        top: divceil(-130, 10, rem);
+      left: divceil(230, 10, rem);
+      }
+    }
+    >li+li {
+      margin-top: divceil(10, 10, rem) !important;
+      @include sp { 
+        margin: divceil(25, 10, rem) auto 0 !important;
+      }
+    }
+  }
+  .area-ttlWrap {
+    width: fit-content;
+    @include sp { 
+      width: 100%;
+    }
+  }
+  .area-ttl {
+    background: linear-gradient(90deg, rgba(165,191,253,1) 0%, rgba(245,128,131,1) 100%);
+    -webkit-background-clip: text;
+    font-size: divceil(29, 10, rem);
+    @include fw(Medium);
+    color: transparent;
+    @include sp { 
+      text-align: center;
+      font-size: divceil(43, 10, rem);
+      line-height: divceil(51, 10, rem);
+    }
+  }
+  .area-txtWrap {
+    width: fit-content;
+  }
+  .area-txt01 {
+    font-size: divceil(14, 10, rem);
+    @include sp { 
+      font-size: divceil(21, 10, rem);
+    }
+  }
+  .area-txt02 {
+    font-size: divceil(68, 10, rem);
+    @include fw(Medium);
+    @include sp { 
+      font-size: divceil(102, 10, rem);
+    }
+  }
+  .mr01 {
+    @include sp { 
+      margin-left: divceil(128, 10, rem);
+    }
+  }
+  .plr01 {
+    @include sp { 
+      padding: 0 divceil(50, 10, rem);
+    }
+  }
+  .mt10 {
+    @include pc { 
+      margin-top: divceil(20, 10, rem) !important;
+    }
+  }
+  .mt11 {
+    @include sp { 
+      margin-top: divceil(15, 10, rem) !important;
+    }
+  }
+  .area-txt03 {
+    font-size: divceil(16, 10, rem);
+    @include fw(Medium);
+    @include sp { 
+      font-size: divceil(24, 10, rem);
+    }
+  }
+  .area-txt04 {
+    font-size: divceil(30, 10, rem);
+    @include fw(Medium);
+    @include sp { 
+      font-size: divceil(45, 10, rem);
+    }
+  }
+  .area-txtSmall {
+    margin-top: divceil(5, 10, rem);
+    display: inline-block;
+    font-size: divceil(14, 10, rem);
+    @include fw(Medium);
+    line-height: divceil(17, 10, rem);
+    @include sp { 
+      font-size: divceil(21, 10, rem);
+      line-height: divceil(33, 10, rem);
+    }
+  }
+}
+
+// キャリアサポート
+.support {
+  &__lead {
+    padding: divceil(195, 10, rem) 0 divceil(190, 10, rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(98deg, rgba(71,59,123,1) 0%, rgba(53,131,166,1) 50%, rgba(48,209,189,1) 100%);
+    @include fw(Medium);
+    color: #fff;
+    @include sp { 
+      padding: divceil(145, 10, rem) 0 divceil(150, 10, rem);
+      display: block;
+      text-align: center;
+    }
+    >h2 {
+      font-size: divceil(60, 10, rem);
+      @include sp { 
+        font-size: divceil(90, 10, rem);
+        line-height: divceil(118, 10, rem);
+      }
+      >span {
+        margin-top: divceil(50, 10, rem);
+        display: block;
+        text-align: center;
+        font-size: divceil(16, 10, rem);
+        @include fw(Regular);
+        @include sp { 
+          margin-top: divceil(20, 10, rem);
+          font-size: divceil(24, 10, rem);
+        }
+      }
+    }
+    >p {
+      margin-top: divceil(100, 10, rem);
+      font-size: divceil(20, 10, rem);
+      line-height: divceil(36, 10, rem);
+      @include sp { 
+        margin-top: divceil(20, 10, rem);
+        font-size: divceil(30, 10, rem);
+        line-height: divceil(54, 10, rem);
+      }
+    }
+  }
+  &__container {
+    margin: 0 auto;
+    padding: divceil(190, 10, rem) 0;
+    max-width: divceil(750, 10, rem);
+    @include sp { 
+      padding: divceil(135, 10, rem) 0 divceil(305, 10, rem);
+      max-width: divceil(670, 10, rem);
+    }
+    >section+section {
+      margin-top: divceil(190, 10, rem);
+      @include sp { 
+        margin-top: divceil(145, 10, rem);
+      }
+    }
+  }
+  &__box {
+    .fnt-01 {
+      font-size:  divceil(27, 10, rem);
+      @include sp { 
+        font-size:  divceil(43, 10, rem);
+      }
+    }
+    >h3 {
+      text-align: center;
+      font-size: divceil(24, 10, rem);
+      line-height: divceil(37, 10, rem);
+      @include fw(Bold);
+      color: #000;
+      @include sp { 
+        font-size: divceil(36, 10, rem);
+        line-height: divceil(56, 10, rem);
+      }
+    }
+    >p {
+      margin-top: divceil(45, 10, rem);
+      font-size: divceil(16, 10, rem);
+      line-height: divceil(32, 10, rem);
+      @include fw(Medium);
+      @include sp { 
+        margin-top: divceil(50, 10, rem);
+        text-align: center;
+        font-size: divceil(24, 10, rem);
+        line-height: divceil(48, 10, rem);
+      }
+    }
+    .mt07 {
+      margin-top: divceil(45, 10, rem);
+      @include sp { 
+        margin-top: divceil(90, 10, rem);
+      }
+    }
+  }
+  &__itemTtl {
+    margin-top: divceil(60, 10, rem);
+    padding: divceil(5, 10, rem) 0 divceil(5, 10, rem) divceil(10, 10, rem);
+    background: linear-gradient(98deg, rgba(71,59,123,1) 0%, rgba(53,131,166,1) 50%, rgba(48,209,189,1) 100%);
+    font-size: divceil(16, 10, rem);
+    @include fw(Medium);
+    color: #fff;
+    @include sp { 
+      margin-top: divceil(90, 10, rem);
+      font-size: divceil(24, 10, rem);
+    }
+    &.mt09 {
+      margin-top: divceil(25, 10, rem);
+      @include sp { 
+        margin-top: divceil(35, 10, rem);
+      }
+    }
+  }
+  &__itemTxt {
+    margin-top: divceil(30, 10, rem);
+    font-size: divceil(14, 10, rem);
+    line-height: divceil(24, 10, rem);
+    @include sp { 
+      margin-top: divceil(45, 10, rem);
+      font-size: divceil(21, 10, rem);
+      line-height: divceil(36, 10, rem);
+    }
+  }
+  .mt08 {
+    margin-top: divceil(100, 10, rem);
+    @include sp { 
+      margin-top: divceil(90, 10, rem);
+    }
+  }
+  &__itemSubTtl {
+    padding: 0 divceil(5, 10, rem);
+    background: linear-gradient(98deg, rgba(71,59,123,1) 0%, rgba(53,131,166,1) 50%, rgba(48,209,189,1) 100%);
+    @include fw(Medium);
+    color: #fff;
+  }
+  &__att {
+    margin-top: divceil(50, 10, rem);
+    display: flex;
+    align-items: center;
+    column-gap: divceil(10, 10, rem);
+    @include sp { 
+      margin-top: divceil(80, 10, rem);
+    }
+    >img {
+      width: divceil(30, 10, rem);
+      height: auto;
+      @include sp { 
+        width: divceil(36, 10, rem);
+      }
+    }
+    >p {
+      font-size: divceil(16, 10, rem);
+      @include fw(Medium);
+      @include sp { 
+        font-size: divceil(24, 10, rem);
+      }
+    }
+  }
+  &__num {
+    &::after {
+      content: "｜";
+      margin: 0 divceil(1, 10, rem);
+      display: inline-block;
+    }
+  }
+  &__passListTtl {
+    margin-top: divceil(40, 10, rem);
+    padding: divceil(5, 10, rem) 0 divceil(5, 10, rem) divceil(10, 10, rem);
+    border: 1px solid $col01;
+    font-size: divceil(16, 10, rem);
+    @include fw(Bold);
+    @include sp { 
+      margin-top: divceil(90, 10, rem);
+      padding: divceil(10, 10, rem);
+      font-size: divceil(24, 10, rem);
+    }
+  }
+  &__passList {
+    margin-top: divceil(20, 10, rem);
+    @include sp { 
+      margin-top: divceil(30, 10, rem);
+    }
+    >li+li {
+      margin-top: divceil(35, 10, rem);
+      @include sp { 
+        margin-top: divceil(30, 10, rem);
+      }
+    }
+    >li {
+      >h3 {
+        padding: divceil(5, 10, rem) 0;
+        display: inline-block;
+        background: linear-gradient(98deg, rgba(71,59,123,1) 0%, rgba(53,131,166,1) 50%, rgba(48,209,189,1) 100%);
+        font-size: divceil(16, 10, rem);
+        @include fw(Bold);
+        color: #fff;
+        @include sp { 
+          font-size: divceil(24, 10, rem);
+          line-height: divceil(56, 10, rem);
+        }
+      }
+      >p {
+        margin-top: divceil(10, 10, rem);
+        font-size: divceil(16, 10, rem);
+        @include fw(Bold);
+        @include sp { 
+          font-size: divceil(24, 10, rem);
+          line-height: divceil(42, 10, rem);
+        }
+      }
+    }
+  }
+}
+
+// フッター
+.foot {
+  padding: divceil(195, 10, rem) 0 divceil(30, 10, rem);
+  background: linear-gradient(98deg, rgba(71,59,123,1) 0%, rgba(53,131,166,1) 50%, rgba(48,209,189,1) 100%);
+  text-align: center;
+  color: #fff;
+  position: relative;
+  @include sp { 
+    padding: divceil(295, 10, rem) 0 divceil(45, 10, rem);
+  }
+  .pagetop {
+    position: absolute;
+    top: -27.3rem;
+    right: 4rem;
+    z-index: 2;
+    writing-mode: vertical-rl;
+    width: 1em;
+    height: 35rem;
+    color: #000;
+    font-size: 1.2rem;
+    font-family: $fnt-Jost;
+    @include sp {
+      top: -27.7rem;
+      right: 2.5rem;
+      font-size: 2.4rem;
+    }
+    span {
+      width: 0.8em;
+      height: 7.3rem;
+      position: absolute;
+      top: 20rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: block;
+      @include sp {
+        top: 20.5rem;
+        width: 1rem;
+      }
+      &::before {
+        content: "";
+        background: #000;
+        width: 0.1rem;
+        height: 100%;
+        position: absolute;
+        left: 0.5rem;
+        top: 0;
+        display: block;
+      }
+      &::after {
+        content: "";
+        width: 1rem;
+        height: 1rem;
+        border-top: solid 1px #000;
+        border-right: solid 1px #000;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+  >h2 {
+    margin: 0 auto;
+    width: divceil(265, 10, rem);
+    height: auto;
+    @include sp { 
+      width: divceil(397, 10, rem);
+    }
+  }
+  >dl {
+    margin-top: divceil(90, 10, rem);
+    @include sp { 
+      margin-top: divceil(135, 10, rem);
+    }
+    >dt {
+      font-size: divceil(16, 10, rem);
+      @include fw(Regular);
+      @include sp { 
+        font-size: divceil(24, 10, rem);
+      }
+    }
+    >dd {
+      font-size: divceil(16, 10, rem);
+      @include sp { 
+        font-size: divceil(24, 10, rem);
+      }
+    }
+    >dt+dd {
+      margin-top: divceil(15, 10, rem);
+      @include sp { 
+        margin-top: divceil(25, 10, rem);
+      }
+    }
+    >dd+dd {
+      margin-top: divceil(15, 10, rem);
+      @include sp { 
+        margin-top: divceil(25, 10, rem);
+      }
+    }
+  }
+  >ul {
+    margin: divceil(90, 10, rem) 0 divceil(25, 10, rem);
+    display: flex;
+    justify-content: center;
+    @include sp { 
+      margin: divceil(135, 10, rem) 0 divceil(40, 10, rem);
+    }
+    >li {
+      font-size: divceil(16, 10, rem);
+      @include sp { 
+        font-size: divceil(24, 10, rem);
+      }
+    }
+    >li+li {
+      &::before {
+        content: "｜";
+        margin: 0 divceil(15, 10, rem);
+        display: inline-block;
+        @include sp { 
+          margin: 0 divceil(20, 10, rem);
+        }
+      }
+    }
+  }
+  >span {
+    font-size: divceil(9, 10, rem);
+    @include sp { 
+      font-size: divceil(13, 10, rem);
+    }
+  }
+}

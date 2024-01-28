@@ -1,0 +1,33 @@
+@charset "UTF-8";
+@use 'mixin' as *;
+
+// 全体の設定
+html {
+  scroll-behavior: smooth;
+  @include pc {
+    font-size: min(#{divceil(10, $pc, vw)}, 10px);
+  }
+  @include sp {
+    font-size: divceil(10, $sp, vw);
+  }
+}
+body {
+  background-color: #E1E1E1;
+  @include fw(Regular);
+  font-family: $fnt-ZKGN;
+  color: $col01;
+  word-break: break-all;
+  &.bg-active {
+    overflow: hidden;
+  }
+}
+.pc-only {
+  @include sp {
+    display: none !important;
+  }
+}
+.sp-only {
+  @include pc {
+    display: none !important;
+  }
+}

@@ -778,14 +778,6 @@ a {
     margin-right: 3rem;
   }
 }
-@media screen and (max-width: 750px) {
-  .u-mr90-sp {
-    margin-right: 9rem;
-  }
-  .u-mr70-sp {
-    margin-right: 7rem;
-  }
-}
 .u-pt60 {
   padding-top: 6rem;
 }

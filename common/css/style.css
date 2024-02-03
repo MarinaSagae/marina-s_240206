@@ -511,3 +511,23 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.site {
+  margin-top: 7rem;
+}
+.site + .site {
+  margin-top: 5rem;
+}
+.site > li:first-of-type {
+  color: #006B3E;
+}
+.site > li:nth-child(2) {
+  margin-top: 2rem;
+  padding-left: 3rem;
+  font-size: 2.4rem;
+}
+.site > li:last-of-type {
+  margin-top: 1rem;
+  padding-left: 3rem;
+  font-size: 1.6rem;
+}
